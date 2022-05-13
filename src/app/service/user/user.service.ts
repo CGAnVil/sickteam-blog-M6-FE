@@ -10,8 +10,8 @@ import {JwtRespone} from '../../model/jwt-respone';
 export class UserService {
   constructor(private httpClient: HttpClient) { }
 
-  findAllPost(): Observable<User[]> {
-    return this.httpClient.get<User[]>('http://localhost:8080/user/post/users');
+  findAllUser(): Observable<User[]> {
+    return this.httpClient.get<User[]>('http://localhost:8080/users');
   }
   findUserByFullName(fullName: string): Observable<User> {
     return this.httpClient.get<User>(`http://localhost:8080/user/post/users/${fullName}`);
