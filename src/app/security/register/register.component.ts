@@ -11,7 +11,7 @@ import {AuthService} from '../../service/auth/auth.service';
 })
 export class RegisterComponent implements OnInit {
   checkPass = false;
-  status = 'Please Fill in the form';
+  status = 'Điền thông tin đăng ký';
   form: any = {};
   signUpForm!: SignUpForm;
   hide = true;
@@ -20,10 +20,10 @@ export class RegisterComponent implements OnInit {
     Validators.email
   ]);
   error1: any = {
-    message: 'User existed, please entry other user'
+    message: 'Người dùng đã tồn tại, vui lòng nhập người dùng khác'
   };
   error2: any = {
-    message: 'Email existed, please entry other email'
+    message: 'Email đã tồn tại, vui lòng nhập email khác'
   };
   success: any = {
     message: 'Success'
@@ -40,7 +40,7 @@ export class RegisterComponent implements OnInit {
 
   ngSubmit() {
     this.signUpForm = new SignUpForm(
-      this.form.name,
+      this.form.fullName,
       this.form.username,
       this.form.email,
       this.form.password,
@@ -49,19 +49,19 @@ export class RegisterComponent implements OnInit {
     this.authService.signUp(this.signUpForm).subscribe(data => {
       console.log('data = ', data);
       if (JSON.stringify(data) === JSON.stringify(this.error1)) {
-        this.status = 'The username is existed! Please try again!';
+        this.status = 'Tên người dùng đã tồn tại! Vui lòng thử lại!';
       }
       if (this.form.password !== this.form.rePassword) {
         this.checkPass = false;
-        this.status = 'Password does not match';
+        this.status = 'Mật khẩu không hợp lệ';
       }
       if (JSON.stringify(data) === JSON.stringify(this.error2)) {
-        this.status = 'The email is existed! Please try again!';
+        this.status = 'Email đã tồn tại! Vui lòng thử lại!';
 
       }
       if (JSON.stringify(data) === JSON.stringify(this.success)) {
-        alert('Register Success, please Login ');
-        this.status = 'Create User account success!';
+        alert('Đăng ký thành công, vui lòng đăng nhập ');
+        this.status = 'Tạo tài khoản người dùng thành công!';
         this.checkSuccess = true;
         this.router.navigate(['/login']);
 

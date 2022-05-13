@@ -11,8 +11,8 @@
           <input name="username" [(ngModel)]="form.username" #username="ngModel" matInput required minlength="3"
                  maxlength="50">
           <mat-icon color="secondary" matSuffix>account_circle</mat-icon>
-          <mat-error *ngIf="username.hasError('required')">The username is required</mat-error>
-          <mat-error *ngIf="username.hasError('minlength')">The username must more than 2 character</mat-error>
+          <mat-error *ngIf="username.hasError('required')">Bạn phải nhập tên</mat-error>
+          <mat-error *ngIf="username.hasError('minlength')">Tên phải nhiều hơn 2 ký tự</mat-error>
         </mat-form-field>
         <br>
         <mat-form-field style="width: 350px" appearance="outline">
@@ -23,13 +23,19 @@
                   [attr.aria-pressed]="hide">
             <mat-icon color="secondary">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
           </button>
-          <mat-error *ngIf="password.hasError('required')">Password is required</mat-error>
-          <mat-error *ngIf="password.hasError('minlength')">Password must more than 5 character</mat-error>
+          <mat-error *ngIf="password.hasError('required')">Bạn phải nhập mật khẩu</mat-error>
+          <mat-error *ngIf="password.hasError('minlength')">Mật khẩu phải có ít nhất 5 ký tự</mat-error>
         </mat-form-field>
         <br>
         <button mat-stroked-button id="login-button" class="mat-button-toggle-group btn-outline-success" [disabled]="checkBlock">Login
           <mat-icon color="secondary" matSuffix>arrow_right_alt</mat-icon>
         </button>
+        <br>
+        <br>
+        <p style="color: #4a80ff">Bạn chưa có tài khoản ->
+        <button mat-stroked-button id="register-button" class="mat-button-toggle-group btn-outline-success" routerLink="/register">Register
+          <mat-icon color="secondary" matSuffix>arrow_right_alt</mat-icon>
+        </button></p>
       </form>
     </div>
   </div>

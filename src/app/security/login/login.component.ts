@@ -48,64 +48,64 @@ export class LoginComponent implements OnInit {
       this.form.username,
       this.form.password
     );
-    // this.authService.findUserByUsername(this.form.username).subscribe(data => {
-    //     if (JSON.stringify(data) == JSON.stringify(this.error1)) {
-    //       this.status = 'Not Found Username';
-    //     }
-    //
-    //     if (data.status == 'block') {
-    //       this.checkBlock = true;
-    //       this.status = 'Account was Blocked';
-    //       this.router.navigate(['/login']).then(() => {
-    //         window.location.reload();
-    //       })
-    //     } else {
-    //       this.authService.signIn(this.signInForm).subscribe(data => {
-    //           console.log('data', data);
-    //           if (data.token != undefined) {
-    //             this.tokenService.setToken(data.token);
-    //             this.tokenService.setName(data.fullName);
-    //             this.name = this.tokenService.getName();
-    //             this.tokenService.setRoles(data.roles);
-    //             this.isLoginFailed = false;
-    //             this.isLoggedIn = true;
-    //             this.nameLogin = data.fullName;
-    //             for (let i = 0; i < data.roles.length; i++) {
-    //               if (data.roles[i]['authority'] === 'ADMIN') {
-    //                 this.role = Role.Admin;
-    //               } else if (data.roles[i]['authority'] === 'USER') {
-    //                 this.role = Role.User;
-    //               }
-    //             }
-    //             this.authService.findUserByUsername(this.form.username).subscribe(data=>{
-    //               this.user = data;
-    //               localStorage.setItem("userLogin", JSON.stringify(this.user));
-    //             });
-    //             this.router.navigate(['']).then(() => {
-    //               window.location.reload();
-    //             });
-    //
-    //
-    //             localStorage.setItem("nameLogin", this.nameLogin);
-    //             localStorage.setItem("roleLogin", this.role);
-    //
-    //           } else {
-    //             this.isLoggedIn = false;
-    //             this.isLoginFailed = true;
-    //             console.log('loginFailed', this.isLoginFailed);
-    //             console.log('isLoggedIn', this.isLoggedIn);
-    //             this.status = 'Login Failed! Please try again!';
-    //           }
-    //         }, error => {
-    //           console.log('error', error);
-    //           this.status = "User or password not correct"
-    //           this.isLoginFailed = true;
-    //         }
-    //       )
-    //     }
-    //
-    //   }
-    // )
+    this.authService.findUserByUsername(this.form.username).subscribe(data => {
+        if (JSON.stringify(data) == JSON.stringify(this.error1)) {
+          this.status = 'Không tìm thấy tên người dùng';
+        }
+
+        if (data.status == 'block') {
+          this.checkBlock = true;
+          this.status = 'Tài khoản đã bị chặn';
+          this.router.navigate(['/login']).then(() => {
+            window.location.reload();
+          })
+        } else {
+          this.authService.signIn(this.signInForm).subscribe(data => {
+              console.log('data', data);
+              if (data.token != undefined) {
+                this.tokenService.setToken(data.token);
+                this.tokenService.setName(data.fullName);
+                this.name = this.tokenService.getName();
+                this.tokenService.setRoles(data.roles);
+                this.isLoginFailed = false;
+                this.isLoggedIn = true;
+                this.nameLogin = data.fullName;
+                for (let i = 0; i < data.roles.length; i++) {
+                  if (data.roles[i]['authority'] === 'ADMIN') {
+                    this.role = Role.Admin;
+                  } else if (data.roles[i]['authority'] === 'USER') {
+                    this.role = Role.User;
+                  }
+                }
+                this.authService.findUserByUsername(this.form.username).subscribe(data=>{
+                  this.user = data;
+                  localStorage.setItem("userLogin", JSON.stringify(this.user));
+                });
+                this.router.navigate(['']).then(() => {
+                  window.location.reload();
+                });
+
+
+                localStorage.setItem("nameLogin", this.nameLogin);
+                localStorage.setItem("roleLogin", this.role);
+
+              } else {
+                this.isLoggedIn = false;
+                this.isLoginFailed = true;
+                console.log('loginFailed', this.isLoginFailed);
+                console.log('isLoggedIn', this.isLoggedIn);
+                this.status = 'Đăng nhập thất bại! Vui lòng thử lại!';
+              }
+            }, error => {
+              console.log('error', error);
+              this.status = "Người dùng hoặc mật khẩu không đúng"
+              this.isLoginFailed = true;
+            }
+          )
+        }
+
+      }
+    )
     this.authService.signIn(this.signInForm).subscribe(data => {
       console.log('data', data);
       if (data.token != undefined) {
@@ -140,13 +140,13 @@ export class LoginComponent implements OnInit {
         this.isLoginFailed = true;
         console.log('loginFailed', this.isLoginFailed);
         console.log('isLoggedIn', this.isLoggedIn);
-        this.status = 'Login Failed! Please try again!';
+        this.status = 'Đăng nhập thất bại! Vui lòng thử lại!';
       }
     }, error => {
       console.log('error', error);
-      this.status = "User or password not correct"
+      this.status = "Người dùng hoặc mật khẩu không đúng"
       this.isLoginFailed = true;
-    })
+    });
 
   }
 
@@ -155,7 +155,7 @@ export class LoginComponent implements OnInit {
 
   }
 
-  public findUserByUsername(username:any) {
+  public findUserByUsername(username: any) {
 
   }
 
