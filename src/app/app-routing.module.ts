@@ -10,7 +10,7 @@ import {PostManagerComponent} from "./shared/post-manager/post-manager.component
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
-  {path: 'change-password', component: ChangePasswordComponent}
+  {path: 'change-password', component: ChangePasswordComponent},
   {path: '', component: HomeComponent},
   {path: 'user',component:PostManagerComponent}
 ];

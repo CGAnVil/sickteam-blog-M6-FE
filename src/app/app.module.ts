@@ -32,7 +32,7 @@ import {MatSortModule} from '@angular/material/sort';
     RegisterComponent,
     NavbarComponent,
     FooterComponent,
-    ChangePasswordComponent
+    ChangePasswordComponent,
     HomeComponent,
     PostManagerComponent
   ],

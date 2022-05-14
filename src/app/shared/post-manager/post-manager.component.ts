@@ -42,7 +42,7 @@ export class PostManagerComponent implements OnInit {
   ngOnInit() {
     this.idLogin = localStorage.getItem('idLogin')
     this.user = JSON.parse(<string>localStorage.getItem("userLogin"))
-    this.findUser(this.idLogin)
+    // this.findUser(this.idLogin)
     this.findAllPostByUserId();
   }
 
@@ -70,12 +70,12 @@ export class PostManagerComponent implements OnInit {
     }
   }
 
-  public findUser(isUser: any) {
-    this.userService.findUserById(isUser).subscribe(data => {
-      this.user = data;
-      this.idLogin = data.id
-    })
-  }
+  // public findUser(isUser: any) {
+  //   this.userService.findUserById(isUser).subscribe(data => {
+  //     this.user = data;
+  //     this.idLogin = data.id
+  //   })
+  // }
 
   public logout() {
     localStorage.removeItem('nameLogin')
