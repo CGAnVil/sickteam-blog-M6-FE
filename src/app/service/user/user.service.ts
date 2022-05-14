@@ -20,9 +20,6 @@ export class UserService {
   changeProfile(user: any): Observable<JwtRespone> {
     return this.httpClient.put<JwtRespone>(`http://localhost:8080/api/auth/changeProfile`, user);
   }
-  changePassword(user: any): Observable<JwtRespone> {
-    return this.httpClient.put<JwtRespone>(`http://localhost:8080/api/auth/changePassword`, user);
-  }
   changeAvatar(user: any): Observable<JwtRespone> {
     return this.httpClient.put<JwtRespone>(`http://localhost:8080/api/auth/changeAvatar`, user);
   }
