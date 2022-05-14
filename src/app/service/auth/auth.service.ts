@@ -10,6 +10,7 @@ import {JwtRespone} from '../../model/jwt-respone';
 import {TokenService} from './token.service';
 import {UserService} from '../user/user.service';
 import {ResponeBody} from '../../model/respone-body';
+import {ChangePassword} from '../../model/change-password';
 
 export enum Role {
   Guess= 'GUESS',
