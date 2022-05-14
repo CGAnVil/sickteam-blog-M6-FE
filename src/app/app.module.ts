@@ -19,14 +19,12 @@ import {
 } from '@angular/material';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { FooterComponent } from './shared/footer/footer.component';
+import { ChangePasswordComponent } from './security/change-password/change-password.component';
 import { HomeComponent } from './shared/home/home.component';
 import { PostManagerComponent } from './shared/post-manager/post-manager.component';
 import {MatTableModule} from '@angular/material/table';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatSortModule} from '@angular/material/sort';
-
-
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,6 +32,7 @@ import {MatSortModule} from '@angular/material/sort';
     RegisterComponent,
     NavbarComponent,
     FooterComponent,
+    ChangePasswordComponent
     HomeComponent,
     PostManagerComponent
   ],

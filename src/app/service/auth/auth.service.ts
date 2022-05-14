@@ -9,6 +9,8 @@ import {SignUpForm} from '../../model/sign-up-form';
 import {JwtRespone} from '../../model/jwt-respone';
 import {TokenService} from './token.service';
 import {UserService} from '../user/user.service';
+import {ResponeBody} from '../../model/respone-body';
+import {ChangePassword} from '../../model/change-password';
 
 export enum Role {
   Guess= 'GUESS',
@@ -81,5 +83,8 @@ export class AuthService {
     return this.httpClient.get<any>(`http://localhost:8080/api/auth/findUserByUsername/${username}`);
   }
 
-}
+  changePassword(user: ChangePassword): Observable<ResponeBody> {
+    return this.httpClient.put<ResponeBody>(`http://localhost:8080/api/auth/changePassword`, user);
+  }
 
+}
