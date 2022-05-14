@@ -25,7 +25,7 @@ export class ChangePasswordComponent implements OnInit {
   matcher = new MyErrorStateMatcher();
   isChangePassed = false;
   isHiddenPassword = true;
-
+  isChecking = true;
   constructor(
     private formBuilder: FormBuilder,
     private authService: AuthService,
@@ -74,6 +74,7 @@ export class ChangePasswordComponent implements OnInit {
           } else {
             this.status = 'Change Password fail!';
             this.isChangePassed = false;
+            this.isChecking = false;
           }
         }, error => {
           alert('khong duoc');
