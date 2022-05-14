@@ -20,7 +20,11 @@ import {
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { ChangePasswordComponent } from './security/change-password/change-password.component';
-
+import { HomeComponent } from './shared/home/home.component';
+import { PostManagerComponent } from './shared/post-manager/post-manager.component';
+import {MatTableModule} from '@angular/material/table';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatSortModule} from '@angular/material/sort';
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,6 +33,8 @@ import { ChangePasswordComponent } from './security/change-password/change-passw
     NavbarComponent,
     FooterComponent,
     ChangePasswordComponent
+    HomeComponent,
+    PostManagerComponent
   ],
   imports: [
     BrowserModule,
@@ -43,7 +49,11 @@ import { ChangePasswordComponent } from './security/change-password/change-passw
     MatInputModule,
     MatButtonModule,
     _MatMenuDirectivesModule,
-    MatMenuModule
+    MatMenuModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule
+
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}
