@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Post} from '../../model/Post';
@@ -8,13 +8,18 @@ import {Post} from '../../model/Post';
 })
 export class PostService {
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient) {
+  }
 
   findAllPost(): Observable<Post[]> {
     return this.httpClient.get<Post[]>('http://localhost:8080/posts');
   }
 
-  findAllPostAction(): Observable<Post[]> {
-    return this.httpClient.get<Post[]> ('http://localhost:8080/posts/findStatus/1');
-}
+  findAllPostPublic(): Observable<Post[]> {
+    return this.httpClient.get<Post[]>('http://localhost:8080/posts/findStatus/1');
+  }
+
+  findAllPostByUserId(idUser:any):Observable<Post[]>{
+    return this.httpClient.get<Post[]>(`http://localhost:8080/posts/users/${idUser}`)
+  }
 }

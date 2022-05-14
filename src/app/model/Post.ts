@@ -9,6 +9,6 @@ export interface Post {
   description: string;
   avatarPost: string;
   status: Status;
-  User: User;
+  user: User;
 }
 

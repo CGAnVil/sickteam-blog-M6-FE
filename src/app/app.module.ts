@@ -20,6 +20,12 @@ import {
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { HomeComponent } from './shared/home/home.component';
+import { PostManagerComponent } from './shared/post-manager/post-manager.component';
+import {MatTableModule} from '@angular/material/table';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatSortModule} from '@angular/material/sort';
+
+
 
 @NgModule({
   declarations: [
@@ -28,7 +34,8 @@ import { HomeComponent } from './shared/home/home.component';
     RegisterComponent,
     NavbarComponent,
     FooterComponent,
-    HomeComponent
+    HomeComponent,
+    PostManagerComponent
   ],
   imports: [
     BrowserModule,
@@ -43,7 +50,11 @@ import { HomeComponent } from './shared/home/home.component';
     MatInputModule,
     MatButtonModule,
     _MatMenuDirectivesModule,
-    MatMenuModule
+    MatMenuModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule
+
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}
