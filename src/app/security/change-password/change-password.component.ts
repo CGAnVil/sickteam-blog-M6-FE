@@ -4,6 +4,7 @@ import {ErrorStateMatcher} from '@angular/material';
 import {AuthService} from '../../service/auth/auth.service';
 import {Router} from '@angular/router';
 import {TokenService} from '../../service/auth/token.service';
+import {ResponeBody} from '../../model/respone-body';
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
@@ -64,7 +65,7 @@ export class ChangePasswordComponent implements OnInit {
     this.authService
       .changePassword(this.myForm.value)
       .subscribe(
-        (response: ResponseBody) => {
+        (response: ResponeBody) => {
           if (response.message === 'ok') {
             this.isChangePassed = true;
             console.log('data trong if', response);
