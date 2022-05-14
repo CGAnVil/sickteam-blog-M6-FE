@@ -26,9 +26,9 @@
                 <div class="blog-thumb">
                   <img height="340" width="770" src="{{posts.avatarPost}}"/></div>
                 <div class="down-content">
-                  <span>{{posts.title}}</span>
+                  <span><a href="#">{{posts.title}}</a></span>
                   <ul class="post-info">
-                    <li><a href="#"></a></li>
+                    <li><a href="#">{{ posts?.user?.fullName }}</a></li>
                     <li><a href="#">{{posts.dateCreate}}</a></li>
                     <li><a href="#">comment</a></li>
                   </ul>

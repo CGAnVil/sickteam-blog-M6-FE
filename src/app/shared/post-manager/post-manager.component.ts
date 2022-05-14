@@ -1,0 +1,89 @@
+import {Component, OnInit, ViewChild} from '@angular/core';
+import {PostService} from "../../service/post/post.service";
+import {MatPaginator} from '@angular/material/paginator';
+import {MatSort} from '@angular/material/sort';
+import {MatTableDataSource} from '@angular/material/table';
+import {Post} from "../../model/Post";
+import {User} from "../../model/user";
+import {UserService} from "../../service/user/user.service";
+import {Router} from "@angular/router";
+
+@Component({
+  selector: 'app-post-manager',
+  templateUrl: './post-manager.component.html',
+  styleUrls: ['./post-manager.component.css']
+})
+export class PostManagerComponent implements OnInit {
+  idLogin!: any;
+  user!: User;
+  nameLogin!: any;
+
+  posts!: Post[];
+  post!: Post;
+
+  displayedColumns: string[] = ['avatarPost', 'title', 'description', 'action'];
+  dataSource!: MatTableDataSource<any>;
+
+
+  // @ts-ignore
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+  // @ts-ignore
+  @ViewChild(MatSort) sort!: MatSort;
+
+
+  constructor(private postService: PostService,
+              private userService: UserService,
+              private router: Router) {
+
+  }
+
+
+
+  ngOnInit() {
+    this.idLogin = localStorage.getItem('idLogin')
+    this.user = JSON.parse(<string>localStorage.getItem("userLogin"))
+    this.findUser(this.idLogin)
+    this.findAllPostByUserId();
+  }
+
+
+  public findAllPostByUserId() {
+    this.postService.findAllPostByUserId(this.user.id).subscribe({
+      next: (result) => {
+        this.posts = result
+        this.dataSource = new MatTableDataSource(result)
+        this.dataSource.paginator = this.paginator;
+        this.dataSource.sort = this.sort;
+        console.log(this.dataSource)
+      }, error: (err) => {
+        // alert('Error while searching product')
+      }
+    })
+  }
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
+  }
+
+  public findUser(isUser: any) {
+    this.userService.findUserById(isUser).subscribe(data => {
+      this.user = data;
+      this.idLogin = data.id
+    })
+  }
+
+  public logout() {
+    localStorage.removeItem('nameLogin')
+    localStorage.removeItem('idLogin')
+    localStorage.removeItem('roleLogin')
+    this.router.navigate(['/login'])
+  }
+
+
+
+}

@@ -22,7 +22,7 @@ export class HomeComponent implements OnInit {
 
 
   getAllProductAction() {
-    this.postService.findAllPostAction().subscribe((postsFormBE) => {
+    this.postService.findAllPostPublic().subscribe((postsFormBE) => {
       this.postsAction = postsFormBE;
     }, error => {
       console.log(error);
