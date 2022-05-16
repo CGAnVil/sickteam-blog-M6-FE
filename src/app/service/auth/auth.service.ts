@@ -66,10 +66,7 @@ export class AuthService {
 
   public onSubmit(signIn: SignInForm) {
 
-
-
   }
-
 
   logout() {
     this.router.navigate(['/login']);

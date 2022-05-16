@@ -8,18 +8,27 @@ import {Post} from '../../model/Post';
 })
 export class PostService {
 
-  constructor(private httpClient: HttpClient) {
+  constructor(private http: HttpClient) {
   }
 
   findAllPost(): Observable<Post[]> {
-    return this.httpClient.get<Post[]>('http://localhost:8080/posts');
+    return this.http.get<Post[]>('http://localhost:8080/posts');
   }
 
   findAllPostPublic(): Observable<Post[]> {
-    return this.httpClient.get<Post[]>('http://localhost:8080/posts/findStatus/1');
+    return this.http.get<Post[]>('http://localhost:8080/posts/findStatus/1');
   }
 
-  findAllPostByUserId(idUser:any):Observable<Post[]>{
-    return this.httpClient.get<Post[]>(`http://localhost:8080/posts/users/${idUser}`)
+  findAllPostByUserId(idUser: any): Observable<Post[]> {
+    return this.http.get<Post[]>(`http://localhost:8080/posts/users/${idUser}`);
   }
+
+  deletePost(id:number): Observable<void> {
+    return this.http.delete<void>(`http://localhost:8080/posts/${id}`);
+  }
+
+  createPost(post:any): Observable<Post> {
+    return this.http.post<Post>('http://localhost:8080/posts', post);
+  }
+
 }

@@ -15,16 +15,20 @@ import {
   MatCardModule,
   MatFormFieldModule,
   MatIconModule,
-  MatInputModule, MatMenuModule
+  MatInputModule, MatMenuModule, MatToolbarModule
 } from '@angular/material';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { ChangePasswordComponent } from './security/change-password/change-password.component';
 import { HomeComponent } from './shared/home/home.component';
-import { PostManagerComponent } from './shared/post-manager/post-manager.component';
 import {MatTableModule} from '@angular/material/table';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatSortModule} from '@angular/material/sort';
+import { PostManagerComponent } from './shared/post-manager/post-manager.component';
+import {MatDialogModule} from '@angular/material/dialog';
+import { PostCreateComponent } from './shared/post-create/post-create.component';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,7 +38,8 @@ import {MatSortModule} from '@angular/material/sort';
     FooterComponent,
     ChangePasswordComponent,
     HomeComponent,
-    PostManagerComponent
+    PostManagerComponent,
+    PostCreateComponent
   ],
   imports: [
     BrowserModule,
@@ -52,7 +57,10 @@ import {MatSortModule} from '@angular/material/sort';
     MatMenuModule,
     MatTableModule,
     MatPaginatorModule,
-    MatSortModule
+    MatSortModule,
+    MatToolbarModule,
+    MatDialogModule,
+
 
   ],
   providers: [

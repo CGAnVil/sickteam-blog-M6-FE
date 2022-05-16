@@ -49,11 +49,9 @@
             <mat-error *ngIf="rePassword.hasError('minlength')">Mật khẩu phải có ít nhất 5 ký tự</mat-error>
 
           </mat-form-field><br>
-          <button id="register-button" mat-stroked-button type="submit" class="mat-button-toggle-group btn-outline-success">Register
-            <mat-icon matSuffix>add_circle</mat-icon>
-          </button>
+          <button id="register-button" mat-stroked-button type="submit" class="mat-button-toggle-group btn-outline-success" color="warn">Register</button>
+          <button routerLink="/login">Return Login</button>
         </form>
-
       </mat-card>
     </div>
   </div>
