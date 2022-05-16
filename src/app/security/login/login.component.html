@@ -1,6 +1,7 @@
 <!--<link rel="stylesheet" href="login.component.css">-->
 
 <div class="container">
+  <h1 style="text-align: center">Login User</h1>
   <div class="row" id="login-form">
     <div class="col-12" style="margin-top: 20px">
       <form class="form-login" #f="ngForm" (ngSubmit)="f.form.valid &&ngSubmit()" novalidate>
@@ -32,10 +33,7 @@
         </button>
         <br>
         <br>
-        <p style="color: #4a80ff">Bạn chưa có tài khoản ->
-        <button mat-stroked-button id="register-button" class="mat-button-toggle-group btn-outline-success" routerLink="/register">Register
-          <mat-icon color="secondary" matSuffix>arrow_right_alt</mat-icon>
-        </button></p>
+        <a routerLink="/register">Bạn Chưa Có Tài Khoản ?</a>
       </form>
     </div>
   </div>
