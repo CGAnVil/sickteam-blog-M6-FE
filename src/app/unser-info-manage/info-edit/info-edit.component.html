@@ -1,30 +1,37 @@
-<h1>Chỉnh sửa Thông tin cá nhân</h1>
-<div>
+<mat-toolbar>
+  <h1><span>Chỉnh sửa thông tin người dùng</span></h1>
+  <span class="example-spacer"></span>
+  <button mat-raised-button color="warn" routerLink="/user">Manager Post</button>
+</mat-toolbar>
+
+<div class="container">
+  <div style="margin-top: 10px ">
   <form [formGroup]="formEditUser" (ngSubmit)="editInfoUser()">
-    <div>
+    <div class="form-group">
       <label for="name">Họ và tên</label>
 
       <input type="text" id="name" formControlName="fullName" placeholder="{{user.fullName}}">
     </div>
-    <div>
+    <div class="form-group">
       <label for="email">Email</label>
       <input type="text" id="email" formControlName="email" placeholder="{{user.email}}">
     </div>
-    <div>
+    <div class="form-group">
       <label for="address">Nhập địa chỉ</label>
       <input type="text" id="address" formControlName="address" placeholder="{{user.address}}">
     </div>
-    <div>
+    <div class="form-group">
       <label for="phone">Nhập số điện thoại</label>
       <input type="text" id="phone" formControlName="phone" placeholder="{{user.phone}}">
     </div>
 
-    <div>
+    <div class="form-group">
       <label for="avatar">Ảnh đại diện</label>
       <input type="file" id="avatar" (change)="onFileSelect($event)">
     </div>
     <div>
-      <button>Submit</button>
+      <button mat-raised-button color="primary">Submit</button>
     </div>
   </form>
+  </div>
 </div>
