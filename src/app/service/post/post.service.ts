@@ -22,6 +22,10 @@ export class PostService {
     return this.http.get<Post>(`http://localhost:8080/posts/${id}`);
   }
 
+  editPost(id, post):Observable<Post>{
+    return this.http.post<Post>(`http://localhost:8080/posts/${id}`,post);
+  }
+
   findAllPostPublic(): Observable<Post[]> {
     return this.http.get<Post[]>('http://localhost:8080/posts/findStatus/1');
   }
@@ -41,9 +45,7 @@ export class PostService {
     return this.http.post('http://localhost:8080/posts/', post , {headers});
   }
 
-  // editPostFormData(id, post): Observable<Post>{
-  //   return this.http.put(`${API_URL}/posts/${id}`, post);
-  // }
+
 
 
 
