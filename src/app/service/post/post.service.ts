@@ -2,8 +2,10 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Post} from '../../model/Post';
-import {RequestOptions} from '../../model/RequestOptions';
+import {RequestOptions} from "../../model/RequestOptions";
+import {environment} from "../../../environments/environment";
 
+const API_URL= `${environment.apiUrl}`;
 @Injectable({
   providedIn: 'root'
 })
@@ -16,6 +18,14 @@ export class PostService {
     return this.http.get<Post[]>('http://localhost:8080/posts');
   }
 
+  findPostById(id):Observable<Post>{
+    return this.http.get<Post>(`http://localhost:8080/posts/${id}`);
+  }
+
+  editPost(id, post):Observable<Post>{
+    return this.http.post<Post>(`http://localhost:8080/posts/${id}`,post);
+  }
+
   findAllPostPublic(): Observable<Post[]> {
     return this.http.get<Post[]>('http://localhost:8080/posts/findStatus/1');
   }
@@ -24,19 +34,23 @@ export class PostService {
     return this.http.get<Post[]>(`http://localhost:8080/posts/users/${idUser}`);
   }
 
-  deletePost(id: number): Observable<void> {
+  deletePost(id:number): Observable<void> {
     return this.http.delete<void>(`http://localhost:8080/posts/${id}`);
   }
 
-  createPost(post?: any): Observable<any> {
-    const requestOptions = this.createRequestOptions(post);
-    return this.http.post('http://localhost:8080/posts', post.data, requestOptions);
-  }
+
 
   createPostFormData(post?: any): Observable<any> {
-    const headers = new HttpHeaders({enctype: 'multipart/form-data'});
-    return this.http.post('http://localhost:8080/posts/', post, {headers});
+    let headers = new HttpHeaders({ 'enctype': 'multipart/form-data'});
+    return this.http.post('http://localhost:8080/posts/', post , {headers});
   }
+
+
+
+
+
+
+
 
   private createRequestOptions(
     options?: RequestOptions,

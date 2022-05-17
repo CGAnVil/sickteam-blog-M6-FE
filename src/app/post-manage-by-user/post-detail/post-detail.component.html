@@ -1,0 +1,19 @@
+<mat-toolbar>
+  <h1><span>Create Post</span></h1>
+  <span class="example-spacer"></span>
+  <button mat-raised-button color="warn" routerLink="/user">Manager Post</button>
+</mat-toolbar>
+<br>
+<br>
+<div class="container">
+  <div style="margin-top: 10px">
+    <h1>{{post.title}}</h1>
+    <div>
+      <label for="content">Nội dung bài viết</label>
+      <p id="content">{{post.content}}</p>
+    </div>
+    <div>
+      <button mat-raised-button color="warn" routerLink="/posts/edit/{{post.id}}">Cập nhật thông tin bài viết</button>
+    </div>
+  </div>
+</div>

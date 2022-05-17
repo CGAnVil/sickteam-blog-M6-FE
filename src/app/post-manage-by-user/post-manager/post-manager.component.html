@@ -22,14 +22,14 @@
         <ng-container matColumnDef="avatarPost">
           <th mat-header-cell *matHeaderCellDef mat-sort-header>AvataPost </th>
           <td mat-cell *matCellDef="let row">
-            <img src="{{row.avatarPost}}" style="height: 90px; width: 90px">
+            <img src="http://localhost:8080/image/{{row.avatarPost}}" style="height: 90px; width: 90px">
           </td>
         </ng-container>
 
         <!-- Progress Column -->
         <ng-container matColumnDef="title">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> Title </th>
-          <td mat-cell *matCellDef="let row"><strong>{{row.title}}</strong></td>
+          <td mat-cell *matCellDef="let row" ><strong routerLink="/posts/{{row.id}}">{{row.title}}</strong></td>
         </ng-container>
 
 
@@ -37,8 +37,8 @@
         <ng-container matColumnDef="action">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
           <td mat-cell *matCellDef="let row">
-            <button mat-icon-button color="primary">
-              <mat-icon>edit</mat-icon>
+            <button mat-icon-button color="primary" routerLink="/posts/edit/{{row.id}}">
+              <mat-icon >edit</mat-icon>
             </button>
             <button mat-icon-button color="warn">
               <mat-icon (click)="deletePost(row.id)" >delete</mat-icon>
