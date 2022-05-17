@@ -1,7 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {User} from "../../model/user";
-import {FormBuilder, FormGroup} from "@angular/forms";
+import {FormBuilder, FormControl, FormGroup} from "@angular/forms";
 import {UserService} from "../../service/user/user.service";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-info-edit',
@@ -12,22 +13,21 @@ export class InfoEditComponent implements OnInit {
 
   user: User
 
-  formEditUser: FormGroup;
-  fb: FormBuilder;
+  formEditUser: FormGroup = new FormGroup({
+    fullName: new FormControl(''),
+    email: new FormControl(''),
+    address: new FormControl(''),
+    phone: new FormControl(''),
+    avatar: new FormControl(''),
+  });
 
-  constructor(private userService: UserService) {
+
+  constructor(private userService: UserService,
+              private route: ActivatedRoute) {
   }
 
   ngOnInit() {
-    this.user = JSON.parse(localStorage.getItem('userLogin'));
-
-    this.formEditUser = this.fb.group({
-      fullName: [''],
-      email: [''],
-      address: [''],
-      phone: [''],
-      avatar: [''],
-    })
+    this.getUserInfo();
   }
 
   onFileSelect(event) {
@@ -38,19 +38,31 @@ export class InfoEditComponent implements OnInit {
     }
   }
 
-  getUserInfo(){
-    this.user = JSON.parse(localStorage.getItem('userLogin'));
+  getUserInfo() {
+    const id = Number(this.route.snapshot.paramMap.get('id'));
+    this.userService.findUserById(id).subscribe((userFormBe)=>{
+      this.user = userFormBe;
+      this.formEditUser.patchValue({
+        fullName: this.user.fullName,
+        email: this.user.email,
+        address: this.user.address,
+        phone: this.user.phone,
+        avatar: this.user.avatar
+      });
+    },error => {
+      console.log(error);
+    })
   }
 
   editInfoUser() {
     const formData: FormData = new FormData();
-    formData.append('fullName', this.formEditUser.get('name').value);
+    formData.append('fullName', this.formEditUser.get('fullName').value);
     formData.append('email', this.formEditUser.get('email').value);
     formData.append('address', this.formEditUser.get('address').value);
     formData.append('phone', this.formEditUser.get('phone').value);
     formData.append('avatar', this.formEditUser.get('avatar').value);
 
-    this.userService.editProfile(this.user.id, formData).subscribe(()=>{
+    this.userService.editProfile(this.user.id, formData).subscribe(() => {
       alert("Chinh sua thanh cong");
     })
 

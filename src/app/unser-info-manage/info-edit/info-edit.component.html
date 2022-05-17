@@ -3,19 +3,20 @@
   <form [formGroup]="formEditUser" (ngSubmit)="editInfoUser()">
     <div>
       <label for="name">Họ và tên</label>
-      <input type="text" id="name" formControlName="fullName" placeholder="Nhập tên họ và tên của bạn">
+
+      <input type="text" id="name" formControlName="fullName" placeholder="{{user.fullName}}">
     </div>
     <div>
       <label for="email">Email</label>
-      <input type="text" id="email" formControlName="email" placeholder="Nhập giá địa chỉ email">
+      <input type="text" id="email" formControlName="email" placeholder="{{user.email}}">
     </div>
     <div>
       <label for="address">Nhập địa chỉ</label>
-      <input type="text" id="address" formControlName="address" placeholder="Nhập địa chỉ của bạn">
+      <input type="text" id="address" formControlName="address" placeholder="{{user.address}}">
     </div>
     <div>
       <label for="phone">Nhập số điện thoại</label>
-      <input type="text" id="phone" formControlName="phone" placeholder="Nhập số điện thoại của bạn">
+      <input type="text" id="phone" formControlName="phone" placeholder="{{user.phone}}">
     </div>
 
     <div>

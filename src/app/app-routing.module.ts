@@ -21,7 +21,7 @@ const routes: Routes = [
   {path: 'createPost' , component: PostCreateComponent},
   {path:'posts/:id', component:PostDetailComponent},
   {path:'user/profile', component: InfoDetailComponent},
-  {path:'user/edit', component:InfoEditComponent}
+  {path:'user/:id', component:InfoEditComponent}
 
 ];
 
