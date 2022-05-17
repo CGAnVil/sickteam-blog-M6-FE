@@ -24,9 +24,10 @@ import { HomeComponent } from './shared/home/home.component';
 import {MatTableModule} from '@angular/material/table';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatSortModule} from '@angular/material/sort';
-import { PostManagerComponent } from './shared/post-manager/post-manager.component';
+import { PostManagerComponent } from './post-manage-by-user/post-manager/post-manager.component';
 import {MatDialogModule} from '@angular/material/dialog';
-import { PostCreateComponent } from './shared/post-create/post-create.component';
+import { PostCreateComponent } from './post-manage-by-user/post-create/post-create.component';
+import { PostDetailComponent } from './post-detail/post-detail.component';
 
 
 @NgModule({
@@ -39,7 +40,8 @@ import { PostCreateComponent } from './shared/post-create/post-create.component'
     ChangePasswordComponent,
     HomeComponent,
     PostManagerComponent,
-    PostCreateComponent
+    PostCreateComponent,
+    PostDetailComponent
   ],
   imports: [
     BrowserModule,

@@ -4,8 +4,8 @@ import {LoginComponent} from './security/login/login.component';
 import {RegisterComponent} from './security/register/register.component';
 import {ChangePasswordComponent} from './security/change-password/change-password.component';
 import {HomeComponent} from './shared/home/home.component';
-import {PostManagerComponent} from './shared/post-manager/post-manager.component';
-import {PostCreateComponent} from './shared/post-create/post-create.component';
+import {PostManagerComponent} from './post-manage-by-user/post-manager/post-manager.component';
+import {PostCreateComponent} from './post-manage-by-user/post-create/post-create.component';
 
 
 
