@@ -1,0 +1,44 @@
+<mat-toolbar>
+  <h1><span>Create Post</span></h1>
+  <span class="example-spacer"></span>
+  <button mat-raised-button color="warn" routerLink="/user">Manager Post</button>
+</mat-toolbar>
+<br>
+<br>
+<div class="container">
+  <div style="margin-top: 10px">
+    <h1>Thông tin chi tiết {{user.userName}}</h1>
+    <div>
+      <label for="content">Họ và tên:</label>
+      <p id="content">{{user.fullName}}</p>
+      <p></p>
+    </div>
+    <div>
+      <label for="email">Email</label>
+      <p id="email">{{user.email}}</p>
+      <p></p>
+    </div>
+    <div>
+      <label for="address">Địa chỉ</label>
+      <p id="address">{{user.address}}</p>
+      <p></p>
+    </div>
+
+    <div>
+      <label for="phone">Số điện thoại</label>
+      <p id="phone">{{user.phone}}</p>
+      <p></p>
+    </div>
+    <div>
+      <label for="avatarPost">Ảnh đại diện</label>
+      <p id="avatarPost"><img src="http://localhost:8080/image/{{user.avatar}}"></p>
+      <p></p>
+    </div>
+    <div>
+      <button mat-raised-button color="warn" routerLink="/user/edit">Cập nhật thông tin Profile</button>
+    </div>
+
+
+  </div>
+</div>
+

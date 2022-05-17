@@ -18,22 +18,10 @@ export class UserService {
   findUserById(idUser: any): Observable<User> {
     return this.httpClient.get<User>(`http://localhost:8080/users/${idUser}`);
   }
-  changeProfile(user: any): Observable<JwtRespone> {
-    return this.httpClient.put<JwtRespone>(`http://localhost:8080/api/auth/changeProfile`, user);
+  editProfile(id, user):Observable<User>{
+    return this.httpClient.post<User>(`http://localhost:8080/users/${id}`, user);
   }
 
-  changeAvatar(user: any): Observable<JwtRespone> {
-    return this.httpClient.put<JwtRespone>(`http://localhost:8080/api/auth/changeAvatar`, user);
 
 
-    // changeProfile(user: any): Observable<JwtRespone> {
-    //   return this.httpClient.put<JwtRespone>(`http://localhost:8080/api/auth/changeProfile`, user);
-    // }
-    // changePassword(user: any): Observable<JwtRespone> {
-    //   return this.httpClient.put<JwtRespone>(`http://localhost:8080/api/auth/changePassword`, user);
-    // }
-    // changeAvatar(user: any): Observable<JwtRespone> {
-    //   return this.httpClient.put<JwtRespone>(`http://localhost:8080/api/auth/changeAvatar`, user);
-    // }
-  }
 }
