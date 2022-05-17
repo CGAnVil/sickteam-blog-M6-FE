@@ -1,14 +1,14 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { LoginComponent } from './security/login/login.component';
+import {AppRoutingModule} from './app-routing.module';
+import {AppComponent} from './app.component';
+import {LoginComponent} from './security/login/login.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {AuthInterceptor} from './service/auth/auth.interceptor';
-import { RegisterComponent } from './security/register/register.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {RegisterComponent} from './security/register/register.component';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {
   _MatMenuDirectivesModule,
   MatButtonModule,
@@ -17,17 +17,18 @@ import {
   MatIconModule,
   MatInputModule, MatMenuModule, MatToolbarModule
 } from '@angular/material';
-import { NavbarComponent } from './shared/navbar/navbar.component';
-import { FooterComponent } from './shared/footer/footer.component';
-import { ChangePasswordComponent } from './security/change-password/change-password.component';
-import { HomeComponent } from './shared/home/home.component';
+import {NavbarComponent} from './shared/navbar/navbar.component';
+import {FooterComponent} from './shared/footer/footer.component';
+import {ChangePasswordComponent} from './security/change-password/change-password.component';
+import {HomeComponent} from './shared/home/home.component';
 import {MatTableModule} from '@angular/material/table';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatSortModule} from '@angular/material/sort';
-import { PostManagerComponent } from './post-manage-by-user/post-manager/post-manager.component';
+import {PostManagerComponent} from './post-manage-by-user/post-manager/post-manager.component';
 import {MatDialogModule} from '@angular/material/dialog';
-import { PostCreateComponent } from './post-manage-by-user/post-create/post-create.component';
-import { PostDetailComponent } from './post-detail/post-detail.component';
+import {PostCreateComponent} from './post-manage-by-user/post-create/post-create.component';
+import {PostDetailComponent} from './post-detail/post-detail.component';
+import { CommentListComponent } from './comment/comment-list/comment-list.component';
 
 
 @NgModule({
@@ -41,7 +42,8 @@ import { PostDetailComponent } from './post-detail/post-detail.component';
     HomeComponent,
     PostManagerComponent,
     PostCreateComponent,
-    PostDetailComponent
+    PostDetailComponent,
+    CommentListComponent
   ],
   imports: [
     BrowserModule,
@@ -70,4 +72,5 @@ import { PostDetailComponent } from './post-detail/post-detail.component';
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

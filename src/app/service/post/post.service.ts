@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Post} from '../../model/Post';
-import {RequestOptions} from "../../model/RequestOptions";
+import {RequestOptions} from '../../model/RequestOptions';
 
 @Injectable({
   providedIn: 'root'
@@ -24,19 +24,20 @@ export class PostService {
     return this.http.get<Post[]>(`http://localhost:8080/posts/users/${idUser}`);
   }
 
-  deletePost(id:number): Observable<void> {
+  deletePost(id: number): Observable<void> {
     return this.http.delete<void>(`http://localhost:8080/posts/${id}`);
   }
 
   createPost(post?: any): Observable<any> {
     const requestOptions = this.createRequestOptions(post);
-    return this.http.post('http://localhost:8080/posts', post.data , requestOptions);
+    return this.http.post('http://localhost:8080/posts', post.data, requestOptions);
   }
 
   createPostFormData(post?: any): Observable<any> {
-    let headers = new HttpHeaders({ 'enctype': 'multipart/form-data'});
-    return this.http.post('http://localhost:8080/posts/', post , {headers});
+    const headers = new HttpHeaders({enctype: 'multipart/form-data'});
+    return this.http.post('http://localhost:8080/posts/', post, {headers});
   }
+
   private createRequestOptions(
     options?: RequestOptions,
   ) {
@@ -48,12 +49,11 @@ export class PostService {
       responseType: 'json' as any,
     };
 
-      if (options.hideLoading) {
-        requestOptions.headers = new HttpHeaders({ ignoreLoadingBar: 'true' });
-      }
-      requestOptions.reportProgress = options.reportProgress;
-      requestOptions.responseType = options.responseType;
-
+    if (options.hideLoading) {
+      requestOptions.headers = new HttpHeaders({ignoreLoadingBar: 'true'});
+    }
+    requestOptions.reportProgress = options.reportProgress;
+    requestOptions.responseType = options.responseType;
 
 
     return requestOptions;

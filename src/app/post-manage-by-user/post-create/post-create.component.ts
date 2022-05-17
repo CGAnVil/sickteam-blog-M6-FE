@@ -11,7 +11,7 @@ import {HttpClient} from '@angular/common/http';
 import {Router} from '@angular/router';
 import {Category} from '../../model/Category';
 import {CategoryService} from '../../service/category/category.service';
-import {RequestOptions} from "../../model/RequestOptions";
+import {RequestOptions} from '../../model/RequestOptions';
 
 @Component({
   selector: 'app-post-create',
@@ -35,8 +35,8 @@ export class PostCreateComponent implements OnInit {
               private statusService: StatusService,
               private fb: FormBuilder,
               private auth: AuthService,
-              private Http:HttpClient,
-              private router:Router,
+              private Http: HttpClient,
+              private router: Router,
               private categoryService: CategoryService
               ) { }
 
@@ -55,7 +55,6 @@ export class PostCreateComponent implements OnInit {
     this.idLogin = localStorage.getItem('idLogin');
     this.user = JSON.parse(<string> localStorage.getItem('userLogin'));
     this.findUser(this.user.id);
-
   }
 
 
