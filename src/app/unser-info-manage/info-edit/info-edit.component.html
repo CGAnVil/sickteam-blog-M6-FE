@@ -1,0 +1,30 @@
+<h1>Chỉnh sửa Thông tin cá nhân</h1>
+<div>
+  <form [formGroup]="formEditUser" (ngSubmit)="editInfoUser()">
+    <div>
+      <label for="name">Họ và tên</label>
+
+      <input type="text" id="name" formControlName="fullName" placeholder="{{user.fullName}}">
+    </div>
+    <div>
+      <label for="email">Email</label>
+      <input type="text" id="email" formControlName="email" placeholder="{{user.email}}">
+    </div>
+    <div>
+      <label for="address">Nhập địa chỉ</label>
+      <input type="text" id="address" formControlName="address" placeholder="{{user.address}}">
+    </div>
+    <div>
+      <label for="phone">Nhập số điện thoại</label>
+      <input type="text" id="phone" formControlName="phone" placeholder="{{user.phone}}">
+    </div>
+
+    <div>
+      <label for="avatar">Ảnh đại diện</label>
+      <input type="file" id="avatar" (change)="onFileSelect($event)">
+    </div>
+    <div>
+      <button>Submit</button>
+    </div>
+  </form>
+</div>
