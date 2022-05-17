@@ -8,7 +8,8 @@ import {
 import { Observable } from 'rxjs';
 import {TokenService} from './token.service';
 const headers = new HttpHeaders({
-  'Content-Type': 'application/json',
+  // 'Content-Type': 'application/json'
+
   'Access-Control-Allow-Origin': '*',
 });
 @Injectable()

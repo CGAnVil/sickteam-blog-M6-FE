@@ -11,6 +11,7 @@ import {HttpClient} from '@angular/common/http';
 import {Router} from '@angular/router';
 import {Category} from '../../model/Category';
 import {CategoryService} from '../../service/category/category.service';
+import {RequestOptions} from "../../model/RequestOptions";
 
 @Component({
   selector: 'app-post-create',
@@ -26,6 +27,7 @@ export class PostCreateComponent implements OnInit {
   posts!: Post[];
   status!: Status[];
   categories!: Category[];
+  protected requestOptions: RequestOptions;
 
 
   constructor(private postService: PostService,
@@ -58,7 +60,7 @@ export class PostCreateComponent implements OnInit {
 
 
   createPost(){
-    const formData = new FormData();
+    const formData: FormData = new FormData();
     formData.append('title',this.formPostCreate.get('title').value);
     formData.append('description',this.formPostCreate.get('description').value);
     formData.append('content',this.formPostCreate.get('content').value);
@@ -66,10 +68,15 @@ export class PostCreateComponent implements OnInit {
     formData.append('status',this.formPostCreate.get('status').value);
     formData.append('avatarPost',this.formPostCreate.get('avatarPost').value);
     formData.append('user',this.idLogin);
-    this.postService.createPost(formData).subscribe( () =>  {
+    // this.requestOptions = { data: {}, params: {} };
+    // this.requestOptions.data = formData;
+    // this.requestOptions.reportProgress = true;
+
+    this.postService.createPostFormData(formData).subscribe( () =>  {
       alert('thanh cong');
-      this.router.navigateByUrl('/user');
-    })
+      // this.router.navigateByUrl('/user');
+    });
+    console.log(formData.getAll('name'));
   }
 
   onFileSelect(event) {
