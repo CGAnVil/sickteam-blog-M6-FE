@@ -33,13 +33,14 @@
                     <li><a href="#">comment</a></li>
                   </ul>
                   <p>{{post.description}}</p>
+                  <p>{{post.content}}</p>
                   <div class="post-options">
                     <div class="row">
                       <div class="col-6">
                         <ul class="post-tags">
                           <li><i class="fa fa-tags"></i></li>
-                          <li><a href="#">Beauty</a>,</li>
-                          <li><a href="#">Nature</a></li>
+                          <li><a href="#">{{post?.category?.name}}</a></li>
+
                         </ul>
                       </div>
                       <div class="col-6">
