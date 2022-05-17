@@ -13,6 +13,7 @@ import {Category} from '../../model/Category';
 import {CategoryService} from '../../service/category/category.service';
 import {RequestOptions} from "../../model/RequestOptions";
 
+declare var CKEDITOR: any;
 @Component({
   selector: 'app-post-create',
   templateUrl: './post-create.component.html',
@@ -52,6 +53,7 @@ export class PostCreateComponent implements OnInit {
       avatarPost: [''],
       user:[''],
     })
+    CKEDITOR.replace('content')
     this.idLogin = localStorage.getItem('idLogin');
     this.user = JSON.parse(<string> localStorage.getItem('userLogin'));
     this.findUser(this.user.id);
