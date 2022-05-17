@@ -21,25 +21,26 @@
       <div class="col-lg-8">
         <div class="all-blog-posts">
           <div class="row">
-            <div class="col-lg-12" *ngFor="let posts of postsAction">
+            <div class="col-lg-12" >
               <div class="blog-post">
                 <div class="blog-thumb">
-                  <img height="340" width="770" src="http://localhost:8080/image/{{posts.avatarPost}}"/></div>
+                  <img height="340" width="770" src="http://localhost:8080/image/{{post.avatarPost}}"/></div>
                 <div class="down-content">
-                  <span><a routerLink="/posts/details/{{posts.id}}"><strong>{{posts.title}}</strong></a></span>
+                  <span><a href="#"><strong>{{post.title}}</strong></a></span>
                   <ul class="post-info">
-                    <li><a href="#">{{ posts?.user?.fullName }}</a></li>
-                    <li><a href="#">{{posts.dateCreate}}</a></li>
+                    <li><a href="#">{{ post?.user?.fullName }}</a></li>
+                    <li><a href="#">{{post.dateCreate}}</a></li>
                     <li><a href="#">comment</a></li>
                   </ul>
-                  <p>{{posts.description}}</p>
+                  <p>{{post.description}}</p>
+                  <p>{{post.content}}</p>
                   <div class="post-options">
                     <div class="row">
                       <div class="col-6">
                         <ul class="post-tags">
                           <li><i class="fa fa-tags"></i></li>
-                          <li><a href="#">Beauty</a>,</li>
-                          <li><a href="#">Nature</a></li>
+                          <li><a href="#">{{post?.category?.name}}</a></li>
+
                         </ul>
                       </div>
                       <div class="col-6">
@@ -54,11 +55,11 @@
                 </div>
               </div>
             </div>
-<!--            <div class="col-lg-12">-->
-<!--              <div class="main-button">-->
-<!--                <a href="blog.html">View All Posts</a>-->
-<!--              </div>-->
-<!--            </div>-->
+            <!--            <div class="col-lg-12">-->
+            <!--              <div class="main-button">-->
+            <!--                <a href="blog.html">View All Posts</a>-->
+            <!--              </div>-->
+            <!--            </div>-->
           </div>
         </div>
       </div>
@@ -136,6 +137,7 @@
     </div>
   </div>
 </section>
+
 
 
 
