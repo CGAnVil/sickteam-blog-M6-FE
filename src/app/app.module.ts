@@ -1,14 +1,14 @@
-import {BrowserModule} from '@angular/platform-browser';
-import {NgModule} from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
 
-import {AppRoutingModule} from './app-routing.module';
-import {AppComponent} from './app.component';
-import {LoginComponent} from './security/login/login.component';
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import { LoginComponent } from './security/login/login.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {AuthInterceptor} from './service/auth/auth.interceptor';
-import {RegisterComponent} from './security/register/register.component';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { RegisterComponent } from './security/register/register.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
   _MatMenuDirectivesModule,
   MatButtonModule,
@@ -24,7 +24,7 @@ import { HomeComponent } from './shared/home/home.component';
 import {MatTableModule} from '@angular/material/table';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatSortModule} from '@angular/material/sort';
-import {PostManagerComponent} from './post-manage-by-user/post-manager/post-manager.component';
+import { PostManagerComponent } from './post-manage-by-user/post-manager/post-manager.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import { PostCreateComponent } from './post-manage-by-user/post-create/post-create.component';
 import { PostDetailComponent } from './post-manage-by-user/post-detail/post-detail.component';
@@ -32,6 +32,7 @@ import { PostEditComponent } from './post-manage-by-user/post-edit/post-edit.com
 import { InfoEditComponent } from './unser-info-manage/info-edit/info-edit.component';
 import { InfoDetailComponent } from './unser-info-manage/info-detail/info-detail.component';
 import { CommentListComponent } from './comment/comment-list/comment-list.component';
+import { PostFullDetailComponent } from './post-full-detail/post-full-detail.component';
 
 
 @NgModule({
@@ -49,7 +50,8 @@ import { CommentListComponent } from './comment/comment-list/comment-list.compon
     CommentListComponent,
     PostEditComponent,
     InfoEditComponent,
-    InfoDetailComponent
+    InfoDetailComponent,
+    PostFullDetailComponent
   ],
   imports: [
     BrowserModule,
@@ -78,5 +80,4 @@ import { CommentListComponent } from './comment/comment-list/comment-list.compon
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule {
-}
+export class AppModule { }
