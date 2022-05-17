@@ -10,6 +10,7 @@ import {PostDetailComponent} from "./post-manage-by-user/post-detail/post-detail
 import {InfoDetailComponent} from "./unser-info-manage/info-detail/info-detail.component";
 import {InfoEditComponent} from "./unser-info-manage/info-edit/info-edit.component";
 import {PostEditComponent} from "./post-manage-by-user/post-edit/post-edit.component";
+import {PostFullDetailComponent} from "./post-full-detail/post-full-detail.component";
 
 
 
@@ -23,7 +24,8 @@ const routes: Routes = [
   {path:'posts/:id', component:PostDetailComponent},
   {path:'user/profile', component: InfoDetailComponent},
   {path:'user/:id', component:InfoEditComponent},
-  {path:'posts/edit/:id', component:PostEditComponent}
+  {path:'posts/edit/:id', component:PostEditComponent},
+  {path:'posts/details/:id', component:PostFullDetailComponent}
 
 ];
 
