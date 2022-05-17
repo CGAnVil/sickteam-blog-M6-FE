@@ -1,5 +1,5 @@
 <mat-toolbar>
-  <h1><span>Create Post</span></h1>
+  <h1><span>Chỉnh sửa bài viết</span></h1>
   <span class="example-spacer"></span>
   <button mat-raised-button color="warn" routerLink="/user">Manager Post</button>
 </mat-toolbar>
@@ -13,30 +13,30 @@
         <input type="text" class="form-control" id="title" formControlName="title" placeholder="Title Post">
       </div>
       <div class="form-group">
-        <label for="Description">Description</label>
-        <input type="text" class="form-control" id="Description" formControlName="description" placeholder="description Post">
+        <label for="description">Description</label>
+        <input type="text" class="form-control" id="description" formControlName="description" placeholder="description Post">
       </div>
       <div class="form-group">
-        <label for="Content">Content</label>
-        <textarea class="form-control" id="Content" rows="3" formControlName="content"></textarea>
+        <label for="content">Content</label>
+        <textarea class="form-control" id="content" rows="3" formControlName="content"></textarea>
       </div>
       <div class="form-group">
         <label for="category">Category</label>
         <select class="form-control" id="category" formControlName="category">
-          <option *ngFor="let ct of categories" [ngValue]="ct.id">{{ct.name}}</option>
+          <option *ngFor="let ct of categories" value="{{ct.id}}">{{ct.name}}</option>
         </select>
       </div>
       <div class="form-group">
-        <label for="Status">Status</label>
-        <select class="form-control" id="Status" formControlName="status">
-          <option *ngFor="let st of status" [ngValue]="st.id">{{st.name}}</option>
+        <label for="status">Status</label>
+        <select class="form-control" id="status" formControlName="status">
+          <option *ngFor="let st of status" value="{{st.id}}">{{st.name}}</option>
         </select>
       </div>
       <div>
-        <label for="image">Image Post</label>
-        <input type="file" id="image" (change)="onFileSelect($event)">
+        <label for="avatarPost">Image Post</label>
+        <input type="file" id="avatarPost" (change)="onFileSelect($event)">
       </div>
-      <button mat-raised-button color="primary">Submit</button>
+
     </form>
   </div>
 </div>
