@@ -25,10 +25,10 @@
         <li class="nav-item" *ngIf="checkLogin" >
           <a id="userInfo" [matMenuTriggerFor]="menu" class="nav-link" style="color: blue"><i>hi, {{nameLogin}}</i></a>
           <mat-menu #menu="matMenu">
-            <a mat-menu-item routerLink="/user" *ngIf="roleLogin == 'USER'">Your Post</a>
-            <a mat-menu-item routerLink="/change-password" *ngIf="roleLogin == 'USER'">Change password</a>
-            <a mat-menu-item routerLink="/user/profile" *ngIf="roleLogin == 'USER'">Profile</a>
-            <a mat-menu-item routerLink="/admin" *ngIf="roleLogin == 'ADMIN'">Management</a>
+            <a mat-menu-item routerLink="/user">Your Post</a>
+            <a mat-menu-item routerLink="/change-password">Change password</a>
+            <a mat-menu-item routerLink="/user/profile">Profile</a>
+            <a mat-menu-item href="http://localhost:4100/admins" *ngIf="roleLogin == 'ADMIN'">Management</a>
             <a mat-menu-item  class="nav-link" (click)="logout()">Logout</a>
           </mat-menu>
         </li>

@@ -11,7 +11,11 @@ import {InfoDetailComponent} from "./unser-info-manage/info-detail/info-detail.c
 import {InfoEditComponent} from "./unser-info-manage/info-edit/info-edit.component";
 import {PostEditComponent} from "./post-manage-by-user/post-edit/post-edit.component";
 import {PostFullDetailComponent} from "./post-full-detail/post-full-detail.component";
+
 import {PostDetailCategoryComponent} from './post-detail-category/post-detail-category.component';
+
+import {CreateCommentComponent} from './comment/create-comment/create-comment.component';
+
 
 
 
@@ -19,7 +23,7 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'change-password', component: ChangePasswordComponent},
-  {path: 'user',component:PostManagerComponent},
+  {path: 'user', component: PostManagerComponent},
   {path: '', component: HomeComponent},
   {path: 'createPost' , component: PostCreateComponent},
   {path:'posts/:id', component:PostDetailComponent},
@@ -27,7 +31,11 @@ const routes: Routes = [
   {path:'user/:id', component:InfoEditComponent},
   {path:'posts/edit/:id', component:PostEditComponent},
   {path:'posts/details/:id', component:PostFullDetailComponent},
-  {path:'posts/details/category/:id' , component:PostDetailCategoryComponent}
+
+  {path:'posts/details/category/:id' , component:PostDetailCategoryComponent},
+
+
+  {path:'createComment/:id', component:CreateCommentComponent}
 
 ];
 

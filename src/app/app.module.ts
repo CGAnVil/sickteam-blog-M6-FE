@@ -32,7 +32,10 @@ import { PostEditComponent } from './post-manage-by-user/post-edit/post-edit.com
 import { InfoEditComponent } from './unser-info-manage/info-edit/info-edit.component';
 import { InfoDetailComponent } from './unser-info-manage/info-detail/info-detail.component';
 import { PostFullDetailComponent } from './post-full-detail/post-full-detail.component';
+
 import { PostDetailCategoryComponent } from './post-detail-category/post-detail-category.component';
+
+import { CreateCommentComponent } from './comment/create-comment/create-comment.component';
 
 
 @NgModule({
@@ -51,7 +54,11 @@ import { PostDetailCategoryComponent } from './post-detail-category/post-detail-
     InfoEditComponent,
     InfoDetailComponent,
     PostFullDetailComponent,
-    PostDetailCategoryComponent
+
+    PostDetailCategoryComponent,
+
+    CreateCommentComponent
+
   ],
   imports: [
     BrowserModule,
@@ -72,7 +79,6 @@ import { PostDetailCategoryComponent } from './post-detail-category/post-detail-
     MatSortModule,
     MatToolbarModule,
     MatDialogModule,
-
 
   ],
   providers: [

@@ -66,6 +66,7 @@ export class PostManagerComponent implements OnInit {
   deletePost(id: any) {
     this.postService.deletePost(id).subscribe(() => {
         this.findAllPostByUserId();
+
       }
     );
   }
@@ -74,6 +75,7 @@ export class PostManagerComponent implements OnInit {
   changePostPublic(id: any){
     this.postService.changePostPublic(id).subscribe(() => {
         this.findAllPostByUserId();
+
       }
     );
   }

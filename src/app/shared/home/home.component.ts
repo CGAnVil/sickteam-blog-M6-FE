@@ -3,8 +3,12 @@ import {PostService} from "../../service/post/post.service";
 import {Post} from "../../model/Post";
 import {UserService} from "../../service/user/user.service";
 import {User} from "../../model/user";
-import {Category} from '../../model/Category';
+
+import {Router} from '@angular/router';
+import {TokenService} from '../../service/auth/token.service';
 import {CategoryService} from '../../service/category/category.service';
+import {Category} from '../../model/Category';
+
 
 @Component({
   selector: 'app-home',
@@ -14,10 +18,17 @@ import {CategoryService} from '../../service/category/category.service';
 export class HomeComponent implements OnInit {
   postsAction: Post[] = [];
   users: User[] = [];
-  category: Category[] = [];
+  category: Category[]=[];
+
+  nameLogin!: string | null;
+  checkLogin = false;
 
   constructor(private postService: PostService,
+              private router: Router,
+              private userService: UserService,
+              private tokenService: TokenService,
               private categoryService: CategoryService) {
+
   }
 
   ngOnInit() {

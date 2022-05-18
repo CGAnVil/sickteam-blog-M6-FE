@@ -17,26 +17,22 @@ export class NavbarComponent implements OnInit {
 
 
   ngOnInit(): void {
+    this.nameLogin = localStorage.getItem('nameLogin');
     this.roleLogin = localStorage.getItem('roleLogin');
-    if (this.tokenService.getToken()) {
+    if (this.nameLogin) {
       this.checkLogin = true;
-      this.nameLogin = this.tokenService.getName();
-      localStorage.setItem('nameLogin', this.nameLogin);
     } else {
-      localStorage.removeItem('nameLogin');
-      localStorage.removeItem('idLogin');
-      localStorage.removeItem('roleLogin');
-      localStorage.removeItem('userLogin');
+      this.checkLogin = false;
     }
   }
 
   logout() {
+    this.checkLogin = false;
+    this.nameLogin = null;
     localStorage.removeItem('nameLogin');
     localStorage.removeItem('idLogin');
     localStorage.removeItem('roleLogin');
     localStorage.removeItem('userLogin');
-    window.sessionStorage.clear();
-    window.location.reload();
-    this.router.navigate(['']);
+    this.router.navigate(['/']);
   }
 }

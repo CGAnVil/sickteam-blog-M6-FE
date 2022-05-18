@@ -27,12 +27,30 @@
                 <div class="down-content">
                   <span><a href="#"><strong>{{post.title}}</strong></a></span>
                   <p>{{post.description}}</p>
-                  <p [innerHTML]="post.content"></p>
+                  <p>{{post.content}}</p>
                   <ul class="post-info">
                     <li><a href="#">{{ post?.user?.fullName }}</a></li>
                     <li><a href="#">{{post.dateCreate | date:'MM/dd/yyyy'}}</a></li>
                     <li><a routerLink="/createComment/{{post.id}}"><i class="fas fa-comment"></i></a></li>
                   </ul>
+                  <div class="card card-primary">
+                    <form [formGroup]="commentForm" (ngSubmit)="createComment()">
+                      <div class="card-body">
+                        <div class="form-group">
+                          <label for="content"><b>Viết bình luận</b></label>
+                          <textarea type="text" class="form-control"
+                                    id="content"
+                                    formControlName="content"
+                                    placeholder="Enter content">
+                          </textarea>
+                        </div>
+                        <div>
+                          <button type="submit" class="btn btn-primary">Gửi</button>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+
                   <div class="comment mt-4 text-justify float-left">
                     <ng-container *ngFor="let cmt of comments">
                       <p>{{cmt.content}}</p>
@@ -40,7 +58,7 @@
                         <li><a href="#"><img style="border-radius: 10px"
                                              src="http://localhost:8080/image/{{cmt.userCommentPost.avatar}}"/></a></li>
                         <li><a href="#">{{cmt.userCommentPost.userName}}</a></li>
-                        <!--                        <li><a routerLink="#"><i class="fas fa-comment"></i></a></li>-->
+<!--                        <li><a routerLink="#"><i class="fas fa-comment"></i></a></li>-->
                       </ul>
                     </ng-container>
                   </div>
@@ -77,6 +95,13 @@
         <div class="sidebar">
           <div class="row">
             <div class="col-lg-12">
+              <div class="sidebar-item search">
+                <form id="search_form" name="gs" method="GET" action="#">
+                  <input type="text" name="q" class="searchText" placeholder="type to search..." autocomplete="on">
+                </form>
+              </div>
+            </div>
+            <div class="col-lg-12">
               <div class="sidebar-item recent-posts">
                 <div class="sidebar-heading">
                   <h2>Recent Posts</h2>
@@ -102,11 +127,34 @@
             <div class="col-lg-12">
               <div class="sidebar-item categories">
                 <div class="sidebar-heading">
-                  <h2>Thể Loại</h2>
+                  <h2>Categories</h2>
                 </div>
                 <div class="content">
-                  <ul *ngFor="let ct of category">
-                    <li><a href="#">* {{ct.name}}</a></li>
+                  <ul>
+                    <li><a href="#">- Nature Lifestyle</a></li>
+                    <li><a href="#">- Awesome Layouts</a></li>
+                    <li><a href="#">- Creative Ideas</a></li>
+                    <li><a href="#">- Responsive Templates</a></li>
+                    <li><a href="#">- HTML5 / CSS3 Templates</a></li>
+                    <li><a href="#">- Creative &amp; Unique</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-12">
+              <div class="sidebar-item tags">
+                <div class="sidebar-heading">
+                  <h2>Tag Clouds</h2>
+                </div>
+                <div class="content">
+                  <ul>
+                    <li><a href="#">Lifestyle</a></li>
+                    <li><a href="#">Creative</a></li>
+                    <li><a href="#">HTML5</a></li>
+                    <li><a href="#">Inspiration</a></li>
+                    <li><a href="#">Motivation</a></li>
+                    <li><a href="#">PSD</a></li>
+                    <li><a href="#">Responsive</a></li>
                   </ul>
                 </div>
               </div>
@@ -117,6 +165,7 @@
     </div>
   </div>
 </section>
+
 
 
 

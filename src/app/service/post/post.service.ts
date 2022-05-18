@@ -69,12 +69,11 @@ export class PostService {
       responseType: 'json' as any,
     };
 
-      if (options.hideLoading) {
-        requestOptions.headers = new HttpHeaders({ ignoreLoadingBar: 'true' });
-      }
-      requestOptions.reportProgress = options.reportProgress;
-      requestOptions.responseType = options.responseType;
-
+    if (options.hideLoading) {
+      requestOptions.headers = new HttpHeaders({ignoreLoadingBar: 'true'});
+    }
+    requestOptions.reportProgress = options.reportProgress;
+    requestOptions.responseType = options.responseType;
 
 
     return requestOptions;

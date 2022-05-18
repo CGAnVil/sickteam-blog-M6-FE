@@ -2,8 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import {Post} from "../model/Post";
 import {ActivatedRoute} from "@angular/router";
 import {PostService} from "../service/post/post.service";
-import {Category} from '../model/Category';
+
+
+import {Comment} from '../model/comment';
+import {CommentService} from '../service/comment/comment.service';
 import {CategoryService} from '../service/category/category.service';
+import {Category} from '../model/Category';
+
 
 @Component({
   selector: 'app-post-full-detail',
@@ -12,13 +17,16 @@ import {CategoryService} from '../service/category/category.service';
 })
 export class PostFullDetailComponent implements OnInit {
 
-  category: Category[] = [];
 
-  post: Post
+  post: Post;
+
+  comments: Comment[] = [];
+  category: Category[] = [];
 
   constructor(private route: ActivatedRoute,
               private postService:PostService,
-              private categoryService: CategoryService) { }
+              private commentService: CommentService,private categoryService: CategoryService) { }
+
 
   ngOnInit() {
     this.getPostById();
@@ -29,10 +37,12 @@ export class PostFullDetailComponent implements OnInit {
     const id = Number(this.route.snapshot.paramMap.get('id'));
     this.postService.findPostById(id).subscribe((postFormBE) =>{
       this.post = postFormBE;
+      this.getAllCommentByPostId(id);
     }, error =>{
       console.log(error);
     });
   }
+
 
 
   getAllCategory(){
@@ -40,6 +50,17 @@ export class PostFullDetailComponent implements OnInit {
       this.category = categoryBE;
     }, error =>  {
       console.log(error)
+    })
+  }
+
+
+  getAllCommentByPostId(id: number) {
+    this.commentService.getAllCommentByPostId(id).subscribe(listComment => {
+      this.comments = listComment;
+      console.log("Get list comment success");
+
+    }, error => {
+      console.log("Get list comment fail!");
     })
   }
 
