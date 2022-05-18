@@ -1,37 +1,32 @@
-<mat-toolbar>
-  <h1><span>Chỉnh sửa thông tin người dùng</span></h1>
-  <span class="example-spacer"></span>
-  <button mat-raised-button color="warn" routerLink="/user">Manager Post</button>
-</mat-toolbar>
-
 <div class="container">
+  <button type="button" class="btn btn-primary float-sm-right" routerLink="/user">Manager Post</button>
   <div style="margin-top: 10px ">
+   <h1>Chỉnh sửa thông tin người dùng</h1>
   <form [formGroup]="formEditUser" (ngSubmit)="editInfoUser()">
     <div class="form-group">
-      <label for="name">Họ và tên</label>
-
-      <input type="text" id="name" formControlName="fullName" placeholder="{{user.fullName}}">
+      <label for="name" class="form-label">Họ và tên</label>
+      <input type="text" id="name" class="form-control" aria-describedby="passwordHelpBlock" formControlName="fullName" placeholder="{{user.fullName}}">
     </div>
     <div class="form-group">
-      <label for="email">Email</label>
-      <input type="text" id="email" formControlName="email" placeholder="{{user.email}}">
+      <label for="email" class="form-label">Email</label>
+      <input type="text" id="email" class="form-control" aria-describedby="passwordHelpBlock" formControlName="email" placeholder="{{user.email}}">
     </div>
     <div class="form-group">
-      <label for="address">Nhập địa chỉ</label>
-      <input type="text" id="address" formControlName="address" placeholder="{{user.address}}">
+      <label for="address" class="form-label">Địa chỉ</label>
+      <input type="text" id="address" class="form-control" aria-describedby="passwordHelpBlock" formControlName="address" placeholder="{{user.address}}">
     </div>
     <div class="form-group">
-      <label for="phone">Nhập số điện thoại</label>
-      <input type="text" id="phone" formControlName="phone" placeholder="{{user.phone}}">
+      <label for="phone" class="form-label">Số điện thoại</label>
+      <input type="text" id="phone" class="form-control" aria-describedby="passwordHelpBlock" formControlName="phone" placeholder="{{user.phone}}">
     </div>
-
-    <div class="form-group">
-      <label for="avatar">Ảnh đại diện</label>
-      <input type="file" id="avatar" (change)="onFileSelect($event)">
+    <div class="mb-3">
+      <label for="avatar" class="form-label">Chọn ảnh</label>
+      <input class="form-control" type="file" id="avatar" (change)="onFileSelect($event)">
     </div>
     <div>
-      <button mat-raised-button color="primary">Submit</button>
+      <button type="button" class="btn btn-primary float-sm-right">Submit</button>
     </div>
   </form>
   </div>
 </div>
+

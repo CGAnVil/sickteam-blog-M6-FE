@@ -19,7 +19,7 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'change-password', component: ChangePasswordComponent},
-  {path: 'user',component:PostManagerComponent},
+  {path: 'user', component: PostManagerComponent},
   {path: '', component: HomeComponent},
   {path: 'createPost' , component: PostCreateComponent},
   {path:'posts/:id', component:PostDetailComponent},

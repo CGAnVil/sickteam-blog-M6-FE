@@ -34,7 +34,6 @@ import { InfoDetailComponent } from './unser-info-manage/info-detail/info-detail
 import { PostFullDetailComponent } from './post-full-detail/post-full-detail.component';
 import { CreateCommentComponent } from './comment/create-comment/create-comment.component';
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -72,7 +71,6 @@ import { CreateCommentComponent } from './comment/create-comment/create-comment.
     MatSortModule,
     MatToolbarModule,
     MatDialogModule,
-
 
   ],
   providers: [

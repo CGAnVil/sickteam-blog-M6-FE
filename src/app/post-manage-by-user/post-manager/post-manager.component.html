@@ -1,7 +1,7 @@
 <mat-toolbar>
   <h1><span>Post Manager</span></h1>
   <span class="example-spacer"></span>
-  <button mat-raised-button color="warn" routerLink="/createPost">Create Post</button>
+  <button type="button" class="btn btn-primary float-sm-right" routerLink="/createPost">Create Post</button>
 </mat-toolbar>
 <div class="container">
   <div style="margin-top: 10px;">
@@ -34,14 +34,24 @@
 
 
         <!-- Fruit Column -->
-        <ng-container matColumnDef="action">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
+        <ng-container matColumnDef="edit">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Edit </th>
           <td mat-cell *matCellDef="let row">
             <button mat-icon-button color="primary" routerLink="/posts/edit/{{row.id}}">
               <mat-icon >edit</mat-icon>
             </button>
+          </td>
+        </ng-container>
+
+
+        <ng-container matColumnDef="action">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
+          <td mat-cell *matCellDef="let row">
             <button mat-icon-button color="warn">
-              <mat-icon (click)="deletePost(row.id)" >delete</mat-icon>
+              <mat-icon (click)="deletePost(row.id)" [hidden]="row.status.id == '2'">delete</mat-icon>
+            </button>
+            <button mat-icon-button color="primary" >
+              <mat-icon (click)="changePostPublic(row.id)" [hidden]="row.status.id == '1'">undelete</mat-icon>
             </button>
           </td>
         </ng-container>
@@ -60,3 +70,5 @@
 
   </div>
 </div>
+
+

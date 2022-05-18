@@ -1,7 +1,7 @@
 <mat-toolbar>
-  <h1><span>Create Post</span></h1>
+  <h1><span>Thông tin bài viết</span></h1>
   <span class="example-spacer"></span>
-  <button mat-raised-button color="warn" routerLink="/user">Manager Post</button>
+<!--  <button type="button" class="btn btn-primary float-sm-right" routerLink="/user">Manager Post</button>-->
 </mat-toolbar>
 <br>
 <br>
@@ -13,7 +13,7 @@
       <p id="content">{{post.content}}</p>
     </div>
     <div>
-      <button mat-raised-button color="warn" routerLink="/posts/edit/{{post.id}}">Cập nhật thông tin bài viết</button>
+      <button class="btn btn-primary float-sm-right" routerLink="/posts/edit/{{post.id}}">Chỉnh sửa thông tin bài viết</button>
     </div>
   </div>
 </div>

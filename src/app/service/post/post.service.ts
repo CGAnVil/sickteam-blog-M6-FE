@@ -38,6 +38,10 @@ export class PostService {
     return this.http.delete<void>(`http://localhost:8080/posts/${id}`);
   }
 
+  changePostPublic(id: number): Observable<void> {
+    return this.http.delete<void>(`http://localhost:8080/posts/changePostsPublic/${id}`)
+  }
+
 
 
   createPostFormData(post?: any): Observable<any> {
