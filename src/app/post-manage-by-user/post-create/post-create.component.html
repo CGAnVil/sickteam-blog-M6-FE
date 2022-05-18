@@ -1,7 +1,7 @@
 <mat-toolbar>
   <h1><span>Create Post</span></h1>
   <span class="example-spacer"></span>
-  <button mat-raised-button color="warn" routerLink="/user">Manager Post</button>
+  <button type="button" class="btn btn-primary float-sm-right" routerLink="/user">Manager Post</button>
 </mat-toolbar>
 <br>
 <br>
@@ -32,9 +32,9 @@
           <option *ngFor="let st of status" [ngValue]="st.id">{{st.name}}</option>
         </select>
       </div>
-      <div>
-        <label for="image">Image Post</label>
-        <input type="file" id="image" (change)="onFileSelect($event)">
+      <div class="mb-3">
+        <label for="avatar" class="form-label">Chọn ảnh</label>
+        <input class="form-control" type="file" id="avatar" (change)="onFileSelect($event)">
       </div>
       <button mat-raised-button color="primary">Submit</button>
     </form>
