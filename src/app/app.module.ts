@@ -32,26 +32,7 @@ import { PostEditComponent } from './post-manage-by-user/post-edit/post-edit.com
 import { InfoEditComponent } from './unser-info-manage/info-edit/info-edit.component';
 import { InfoDetailComponent } from './unser-info-manage/info-detail/info-detail.component';
 import { PostFullDetailComponent } from './post-full-detail/post-full-detail.component';
-import {AngularFireModule} from '@angular/fire';
-import {environment} from '../environments/environment';
-import {AngularFireAuthModule} from '@angular/fire/auth';
-import {AuthServiceConfig, FacebookLoginProvider, GoogleLoginProvider} from 'angular-6-social-login';
 
-export function socialConfigs() {
-  const config = new AuthServiceConfig(
-    [
-      {
-        id: FacebookLoginProvider.PROVIDER_ID,
-        provider: new FacebookLoginProvider('app -id')
-      },
-      {
-        id: GoogleLoginProvider.PROVIDER_ID,
-        provider: new GoogleLoginProvider('app-id')
-      }
-    ]
-  );
-  return config;
-}
 @NgModule({
   declarations: [
     AppComponent,
@@ -88,9 +69,6 @@ export function socialConfigs() {
     MatSortModule,
     MatToolbarModule,
     MatDialogModule,
-    AngularFireModule.initializeApp(environment.firebase),
-    AngularFireAuthModule
-
 
   ],
   providers: [
