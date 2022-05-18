@@ -19,13 +19,13 @@
       <div class="form-group">
         <label for="category">Category</label>
         <select class="form-control" id="category" formControlName="category">
-          <option *ngFor="let ct of categories" value="{{ct.id}}" >{{ct.name}}</option>
+          <option *ngFor="let ct of categories" value="{{ct.id}}"   >{{ct.name}}</option>
         </select>
       </div>
       <div class="form-group">
         <label for="status">Status</label>
         <select class="form-control" id="status" formControlName="status">
-          <option *ngFor="let st of status" value="{{st.id}}">{{st.name}}</option>
+          <option *ngFor="let st of status" value="{{st.id}}" >{{st.name}}</option>
         </select>
       </div>
       <div class="mb-3">
