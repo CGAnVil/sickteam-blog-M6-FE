@@ -28,7 +28,7 @@
             <a mat-menu-item routerLink="/user">Your Post</a>
             <a mat-menu-item routerLink="/change-password">Change password</a>
             <a mat-menu-item routerLink="/user/profile">Profile</a>
-            <a mat-menu-item routerLink="/admin" *ngIf="roleLogin == 'ADMIN'">Management</a>
+            <a mat-menu-item href="http://localhost:4100/admins" *ngIf="roleLogin == 'ADMIN'">Management</a>
             <a mat-menu-item  class="nav-link" (click)="logout()">Logout</a>
           </mat-menu>
         </li>
