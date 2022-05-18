@@ -37,8 +37,8 @@ export class PostCreateComponent implements OnInit {
               private statusService: StatusService,
               private fb: FormBuilder,
               private auth: AuthService,
-              private Http:HttpClient,
-              private router:Router,
+              private Http: HttpClient,
+              private router: Router,
               private categoryService: CategoryService
               ) { }
 

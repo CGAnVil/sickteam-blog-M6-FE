@@ -25,16 +25,6 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.getAllProductAction();
-    // if (this.tokenService.getToken()){
-    //   this.checkLogin = true;
-    //   this.nameLogin = this.tokenService.getName();
-    //   localStorage.setItem('nameLogin', this.nameLogin);
-    // } else {
-    //   localStorage.removeItem('nameLogin');
-    //   localStorage.removeItem('idLogin');
-    //   localStorage.removeItem('roleLogin');
-    //   localStorage.removeItem('userLogin');
-    // }
   }
 
 
