@@ -1,13 +1,6 @@
-<mat-toolbar>
-  <h1><span>Create Post</span></h1>
-  <span class="example-spacer"></span>
-  <button mat-raised-button color="warn" routerLink="/user">Manager Post</button>
-</mat-toolbar>
-<br>
-<br>
 <div class="container">
   <div style="margin-top: 10px">
-    <h1>Thông tin chi tiết {{user.userName}}</h1>
+    <h1>Thông tin chi tiết </h1>
     <div>
       <label for="content">Họ và tên:</label>
       <p id="content">{{user.fullName}}</p>
@@ -35,7 +28,7 @@
       <p></p>
     </div>
     <div>
-      <button mat-raised-button color="warn" routerLink="/user/{{user.id}}">Cập nhật thông tin Profile</button>
+      <button type="button" class="btn btn-primary float-sm-right" routerLink="/user/{{user.id}}">Cập nhật thông tin Profile</button>
     </div>
 
 

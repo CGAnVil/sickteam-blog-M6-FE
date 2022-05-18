@@ -33,7 +33,6 @@ import { InfoEditComponent } from './unser-info-manage/info-edit/info-edit.compo
 import { InfoDetailComponent } from './unser-info-manage/info-detail/info-detail.component';
 import { PostFullDetailComponent } from './post-full-detail/post-full-detail.component';
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -70,7 +69,6 @@ import { PostFullDetailComponent } from './post-full-detail/post-full-detail.com
     MatSortModule,
     MatToolbarModule,
     MatDialogModule,
-
 
   ],
   providers: [
