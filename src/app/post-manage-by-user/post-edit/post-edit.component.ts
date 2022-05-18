@@ -98,8 +98,8 @@ export class PostEditComponent implements OnInit {
     formData.append('title', this.formPostEdit.get('title').value);
     formData.append('description', this.formPostEdit.get('description').value);
     formData.append('content', this.formPostEdit.get('content').value);
-    formData.append('category', this.formPostEdit.get('category').value);
-    formData.append('status', this.formPostEdit.get('status').value);
+    formData.append('category', this.formPostEdit.get('category').value.id);
+    formData.append('status', this.formPostEdit.get('status').value.id);
     formData.append('avatarPost', this.formPostEdit.get('avatarPost').value);
 
     this.postService.editPost(this.post.id, formData).subscribe(()=>{
