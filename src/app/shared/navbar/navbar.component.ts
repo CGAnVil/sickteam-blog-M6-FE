@@ -27,6 +27,7 @@ export class NavbarComponent implements OnInit {
       localStorage.removeItem('idLogin');
       localStorage.removeItem('roleLogin');
       localStorage.removeItem('userLogin');
+      localStorage.removeItem('socialusers')
     }
   }
 
@@ -35,6 +36,7 @@ export class NavbarComponent implements OnInit {
     localStorage.removeItem('idLogin');
     localStorage.removeItem('roleLogin');
     localStorage.removeItem('userLogin');
+    localStorage.removeItem('socialusers');
     window.sessionStorage.clear();
     window.location.reload();
     this.router.navigate(['']);

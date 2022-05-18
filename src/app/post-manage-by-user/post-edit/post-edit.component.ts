@@ -11,7 +11,7 @@ import {StatusService} from "../../service/status/status.service";
 import {UserService} from "../../service/user/user.service";
 import {AuthService} from "../../service/auth/auth.service";
 import {HttpClient} from "@angular/common/http";
-
+declare var CKEDITOR: any;
 @Component({
   selector: 'app-post-edit',
   templateUrl: './post-edit.component.html',
@@ -50,6 +50,7 @@ export class PostEditComponent implements OnInit {
     this.getPostById();
     this.getAllCategory();
     this.getAllStatus();
+    CKEDITOR.replace('content');
   }
 
   getPostById() {
@@ -98,13 +99,13 @@ export class PostEditComponent implements OnInit {
     formData.append('title', this.formPostEdit.get('title').value);
     formData.append('description', this.formPostEdit.get('description').value);
     formData.append('content', this.formPostEdit.get('content').value);
-    formData.append('category', this.formPostEdit.get('category').value);
-    formData.append('status', this.formPostEdit.get('status').value);
-    if (this.formPostEdit.get('avatarPost') !=null) {
-      formData.append('avatarPost', this.formPostEdit.get('avatarPost').value);
-    }else {
-      formData.append('avatarPost', this.post.avatarPost);
+    formData.append('category', this.formPostEdit.get('category').value.id);
+    formData.append('status', this.formPostEdit.get('status').value.id);
+    const files = (document.getElementById('image') as HTMLInputElement).files;
+    if (files.length > 0) {
+      formData.append('avatarPost', files[0]);
     }
+
     this.postService.editPost(this.post.id, formData).subscribe(()=>{
       alert("Chinh sua thanh cong");
     })
