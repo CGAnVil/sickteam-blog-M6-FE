@@ -31,7 +31,7 @@
                   <ul class="post-info">
                     <li><a href="#">{{ post?.user?.fullName }}</a></li>
                     <li><a href="#">{{post.dateCreate | date:'MM/dd/yyyy'}}</a></li>
-                    <li><a routerLink="/createComment/{{post.id}}"><i class="fas fa-comment"></i></a></li>
+                    <li><a routerLink="/createComment/{{post.id}}">{{comments.length}}&nbsp;<i class="fas fa-comment"></i></a></li>
                   </ul>
                   <div class="card card-primary">
                     <form [formGroup]="commentForm" (ngSubmit)="createComment()">
