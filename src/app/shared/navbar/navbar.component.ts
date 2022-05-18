@@ -18,8 +18,8 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit(): void {
     this.nameLogin = localStorage.getItem('nameLogin');
-    this.roleLogin = localStorage.getItem('roleLogin');
     if (this.nameLogin) {
+      this.roleLogin = localStorage.getItem('roleLogin');
       this.checkLogin = true;
     } else {
       this.checkLogin = false;
