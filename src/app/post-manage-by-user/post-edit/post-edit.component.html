@@ -1,12 +1,8 @@
-<mat-toolbar>
-  <h1><span>Chỉnh sửa bài viết</span></h1>
-  <span class="example-spacer"></span>
-  <button mat-raised-button color="warn" routerLink="/user">Manager Post</button>
-</mat-toolbar>
-<br>
-<br>
+
 <div class="container">
-  <div style="margin-top: 10px">
+  <button type="button" class="btn btn-primary float-sm-right" routerLink="/user">Manager Post</button>
+  <div style="margin-top: 10px ">
+    <h1>Chỉnh sửa thông tin bài viết</h1>
     <form [formGroup]="formPostEdit" (ngSubmit)="editPost()">
       <div class="form-group">
         <label for="title">Title Post</label>
@@ -32,11 +28,11 @@
           <option *ngFor="let st of status" value="{{st.id}}">{{st.name}}</option>
         </select>
       </div>
-      <div>
-        <label for="avatarPost">Image Post</label>
-        <input type="file" id="avatarPost" (change)="onFileSelect($event)">
+      <div class="mb-3">
+        <label for="avatar" class="form-label">Chọn ảnh</label>
+        <input class="form-control" type="file" id="avatar" (change)="onFileSelect($event)">
       </div>
-      <button mat-raised-button color="primary">Submit</button>
+      <button type="button" class="btn btn-primary float-sm-right">Submit</button>
     </form>
   </div>
 </div>
