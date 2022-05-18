@@ -1,4 +1,5 @@
 import {Role} from '../service/auth/auth.service';
+import {UserStatus} from './user-status';
 
 export interface User {
   id: number;
@@ -9,6 +10,6 @@ export interface User {
   address: string;
   phone: string;
   avatar: string;
-  status: string;
-   role: Role[];
+  status?: UserStatus;
+  role: Role[];
 }

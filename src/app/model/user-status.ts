@@ -1,4 +1,4 @@
-export interface Status {
+export interface UserStatus {
   id: number;
   name: string;
 }
