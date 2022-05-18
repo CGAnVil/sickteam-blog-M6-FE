@@ -11,7 +11,7 @@ import {HttpClient} from '@angular/common/http';
 import {Router} from '@angular/router';
 import {Category} from '../../model/Category';
 import {CategoryService} from '../../service/category/category.service';
-import {RequestOptions} from "../../model/RequestOptions";
+
 
 declare var CKEDITOR: any;
 @Component({
