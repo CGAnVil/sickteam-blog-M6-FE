@@ -54,7 +54,7 @@ export class PostCreateComponent implements OnInit {
       avatarPost: [''],
       user:[''],
     })
-    CKEDITOR.replace('content');
+    CKEDITOR.replace('contentCreate');
     this.idLogin = localStorage.getItem('idLogin');
     this.user = JSON.parse(<string> localStorage.getItem('userLogin'));
     this.findUser(this.user.id);
@@ -66,7 +66,7 @@ export class PostCreateComponent implements OnInit {
     const formData: FormData = new FormData();
     formData.append('title',this.formPostCreate.get('title').value);
     formData.append('description',this.formPostCreate.get('description').value);
-    formData.append('content',CKEDITOR.instances['content'].getData());
+    formData.append('content',CKEDITOR.instances['contentCreate'].getData());
     formData.append('category',this.formPostCreate.get('category').value);
     formData.append('status',this.formPostCreate.get('status').value);
     formData.append('avatarPost',this.formPostCreate.get('avatarPost').value);

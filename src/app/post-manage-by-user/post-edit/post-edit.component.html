@@ -17,13 +17,13 @@
         <input type="text" class="form-control" id="description" formControlName="description" placeholder="description Post">
       </div>
       <div class="form-group">
-        <label for="content">Content</label>
-        <textarea name="content" class="form-control" id="content" rows="3" formControlName="content"></textarea>
+        <label for="contentEdit">Content</label>
+        <textarea name="contentEdit" class="form-control" id="contentEdit" rows="3" formControlName="content"></textarea>
       </div>
       <div class="form-group">
         <label for="category">Category</label>
         <select class="form-control" id="category" formControlName="category">
-          <option *ngFor="let ct of categories" value="{{ct.id}}">{{ct.name}}</option>
+          <option *ngFor="let ct of categories" value="{{ct.id}}" >{{ct.name}}</option>
         </select>
       </div>
       <div class="form-group">

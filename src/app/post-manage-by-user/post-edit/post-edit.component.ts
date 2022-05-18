@@ -50,7 +50,8 @@ export class PostEditComponent implements OnInit {
     this.getPostById();
     this.getAllCategory();
     this.getAllStatus();
-    CKEDITOR.replace('content');
+    CKEDITOR.replace('contentEdit');
+
   }
 
   getPostById() {
@@ -98,10 +99,10 @@ export class PostEditComponent implements OnInit {
     const formData: FormData = new FormData();
     formData.append('title', this.formPostEdit.get('title').value);
     formData.append('description', this.formPostEdit.get('description').value);
-    formData.append('content', this.formPostEdit.get('content').value);
+    formData.append('content', CKEDITOR.instances['contentEdit'].getData());
     formData.append('category', this.formPostEdit.get('category').value.id);
     formData.append('status', this.formPostEdit.get('status').value.id);
-    const files = (document.getElementById('image') as HTMLInputElement).files;
+    const files = (document.getElementById('avatarPost') as HTMLInputElement).files;
     if (files.length > 0) {
       formData.append('avatarPost', files[0]);
     }
