@@ -15,7 +15,7 @@
                   <ul class="post-info">
                     <li><a href="#">{{ posts?.user?.fullName }}</a></li>
                     <li><a href="#">{{posts.dateCreate}}</a></li>
-                    <li><a href="#">comment</a></li>
+                    <li><a routerLink="/createComment/{{posts.id}}"><i class="fas fa-comment"></i></a></li>
                   </ul>
                   <p>{{posts.description}}</p>
                   <div class="post-options">
