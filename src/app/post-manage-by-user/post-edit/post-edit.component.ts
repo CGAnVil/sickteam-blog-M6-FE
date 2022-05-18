@@ -42,7 +42,8 @@ export class PostEditComponent implements OnInit {
     private Http: HttpClient,
     private router: Router,
     private route: ActivatedRoute,
-    private categoryService: CategoryService
+    private categoryService: CategoryService,
+
   ) {
   }
 
@@ -50,7 +51,8 @@ export class PostEditComponent implements OnInit {
     this.getPostById();
     this.getAllCategory();
     this.getAllStatus();
-    CKEDITOR.replace('content');
+    CKEDITOR.replace('contentEdit');
+    CKEDITOR.instances['contentEdit'].set(this.post.content);
   }
 
   getPostById() {
@@ -64,7 +66,8 @@ export class PostEditComponent implements OnInit {
         category: this.post.category,
         status: this.post.status,
         avatarPost: this.post.avatarPost
-      })
+      });
+
     }, error => {
       console.log(error);
     });
@@ -98,10 +101,10 @@ export class PostEditComponent implements OnInit {
     const formData: FormData = new FormData();
     formData.append('title', this.formPostEdit.get('title').value);
     formData.append('description', this.formPostEdit.get('description').value);
-    formData.append('content', this.formPostEdit.get('content').value);
-    formData.append('category', this.formPostEdit.get('category').value.id);
-    formData.append('status', this.formPostEdit.get('status').value.id);
-    const files = (document.getElementById('image') as HTMLInputElement).files;
+    formData.append('content', CKEDITOR.instances['contentEdit'].getData());
+    formData.append('category', this.formPostEdit.get('category').value);
+    formData.append('status', this.formPostEdit.get('status').value);
+    const files = (document.getElementById('avatarPost') as HTMLInputElement).files;
     if (files.length > 0) {
       formData.append('avatarPost', files[0]);
     }
