@@ -31,8 +31,8 @@ import { PostDetailComponent } from './post-manage-by-user/post-detail/post-deta
 import { PostEditComponent } from './post-manage-by-user/post-edit/post-edit.component';
 import { InfoEditComponent } from './unser-info-manage/info-edit/info-edit.component';
 import { InfoDetailComponent } from './unser-info-manage/info-detail/info-detail.component';
-import { CommentListComponent } from './comment/comment-list/comment-list.component';
 import { PostFullDetailComponent } from './post-full-detail/post-full-detail.component';
+import { CreateCommentComponent } from './comment/create-comment/create-comment.component';
 
 
 @NgModule({
@@ -47,11 +47,11 @@ import { PostFullDetailComponent } from './post-full-detail/post-full-detail.com
     PostManagerComponent,
     PostCreateComponent,
     PostDetailComponent,
-    CommentListComponent,
     PostEditComponent,
     InfoEditComponent,
     InfoDetailComponent,
-    PostFullDetailComponent
+    PostFullDetailComponent,
+    CreateCommentComponent
   ],
   imports: [
     BrowserModule,

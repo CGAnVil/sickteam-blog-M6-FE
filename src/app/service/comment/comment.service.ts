@@ -10,8 +10,8 @@ export class CommentService {
 
   constructor(private http: HttpClient) { }
 
-  getAllCommentByPostId(idPost: number): Observable<any> {
-    return this.http.get<any>(`http://localhost:8080/comments/${idPost}`);
+  getAllCommentByPostId(idPost: number): Observable<Comment[]> {
+    return this.http.get<Comment[]>(`http://localhost:8080/comments/${idPost}`);
   }
 
   getAllReplyComment(idPost: number, idComment: number): Observable<Comment[]> {

@@ -33,12 +33,30 @@
                     <li><a href="#">{{post.dateCreate | date:'MM/dd/yyyy'}}</a></li>
                     <li><a routerLink="/createComment/{{post.id}}"><i class="fas fa-comment"></i></a></li>
                   </ul>
+                  <div class="card card-primary">
+                    <form [formGroup]="commentForm" (ngSubmit)="createComment()">
+                      <div class="card-body">
+                        <div class="form-group">
+                          <label for="content"><b>Viết bình luận</b></label>
+                          <textarea type="text" class="form-control"
+                                    id="content"
+                                    formControlName="content"
+                                    placeholder="Enter content">
+                          </textarea>
+                        </div>
+                        <div>
+                          <button type="submit" class="btn btn-primary">Gửi</button>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
 
                   <div class="comment mt-4 text-justify float-left">
                     <ng-container *ngFor="let cmt of comments">
                       <p>{{cmt.content}}</p>
                       <ul class="post-info">
-                        <li><a href="#"><img style="border-radius: 10px" src="http://localhost:8080/image/{{cmt.userCommentPost.avatar}}"/></a></li>
+                        <li><a href="#"><img style="border-radius: 10px"
+                                             src="http://localhost:8080/image/{{cmt.userCommentPost.avatar}}"/></a></li>
                         <li><a href="#">{{cmt.userCommentPost.userName}}</a></li>
 <!--                        <li><a routerLink="#"><i class="fas fa-comment"></i></a></li>-->
                       </ul>
@@ -147,6 +165,7 @@
     </div>
   </div>
 </section>
+
 
 
 
