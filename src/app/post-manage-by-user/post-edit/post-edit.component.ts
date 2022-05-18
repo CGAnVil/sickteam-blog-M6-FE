@@ -42,7 +42,8 @@ export class PostEditComponent implements OnInit {
     private Http: HttpClient,
     private router: Router,
     private route: ActivatedRoute,
-    private categoryService: CategoryService
+    private categoryService: CategoryService,
+
   ) {
   }
 
@@ -51,7 +52,7 @@ export class PostEditComponent implements OnInit {
     this.getAllCategory();
     this.getAllStatus();
     CKEDITOR.replace('contentEdit');
-
+    CKEDITOR.instances['contentEdit'].set(this.post.content);
   }
 
   getPostById() {
@@ -65,7 +66,8 @@ export class PostEditComponent implements OnInit {
         category: this.post.category,
         status: this.post.status,
         avatarPost: this.post.avatarPost
-      })
+      });
+
     }, error => {
       console.log(error);
     });
@@ -96,6 +98,7 @@ export class PostEditComponent implements OnInit {
   }
 
   editPost() {
+
     const formData: FormData = new FormData();
     formData.append('title', this.formPostEdit.get('title').value);
     formData.append('description', this.formPostEdit.get('description').value);
