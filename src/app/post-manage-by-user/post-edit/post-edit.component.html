@@ -1,8 +1,10 @@
-
+<mat-toolbar>
+  <h1><span>Chỉnh sửa bài viết</span></h1>
+  <span class="example-spacer"></span>
+  <button type="button" class="btn btn-primary float-sm-right" routerLink="/user">Quản lý bài viết</button>
+</mat-toolbar><br>
 <div class="container">
-  <button type="button" class="btn btn-primary float-sm-right" routerLink="/user">Manager Post</button>
-  <div style="margin-top: 10px ">
-    <h1>Chỉnh sửa thông tin bài viết</h1>
+  <div style="margin-top: 10px">
     <form [formGroup]="formPostEdit" (ngSubmit)="editPost()">
       <div class="form-group">
         <label for="title">Title Post</label>
