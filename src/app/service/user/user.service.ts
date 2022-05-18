@@ -18,7 +18,7 @@ export class UserService {
   findUserById(idUser: any): Observable<User> {
     return this.httpClient.get<User>(`http://localhost:8080/users/${idUser}`);
   }
-  editProfile(id, user):Observable<User>{
+  editProfile(id, user): Observable<User> {
     return this.httpClient.post<User>(`http://localhost:8080/users/${id}`, user);
   }
 

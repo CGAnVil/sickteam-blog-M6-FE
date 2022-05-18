@@ -5,7 +5,17 @@
 export const environment = {
   production: false,
   apiAuth : 'http://localhost:8080/api/auth',
-  apiUrl: 'http://localhost:8080'
+  apiUrl: 'http://localhost:8080',
+  firebase: {
+    apiKey: 'AIzaSyDEwDar22B6rbt7jpyVI5mQkk20PJyk5lw',
+    authDomain: 'organic-cat-350221.firebaseapp.com',
+    databaseURL: '<your-database-URL>',
+    projectId: 'organic-cat-350221',
+    storageBucket: 'organic-cat-350221.appspot.com',
+    messagingSenderId: '754609459743',
+    appId: '1:754609459743:web:a2dbe6c709b8d90746fb2a',
+    measurementId: '<your-measurement-id>'
+  }
 
 };
 
