@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {Post} from "../model/Post";
 import {ActivatedRoute} from "@angular/router";
 import {PostService} from "../service/post/post.service";
+import {Category} from '../model/Category';
+import {CategoryService} from '../service/category/category.service';
 
 @Component({
   selector: 'app-post-full-detail',
@@ -10,13 +12,17 @@ import {PostService} from "../service/post/post.service";
 })
 export class PostFullDetailComponent implements OnInit {
 
+  category: Category[] = [];
+
   post: Post
 
   constructor(private route: ActivatedRoute,
-              private postService:PostService) { }
+              private postService:PostService,
+              private categoryService: CategoryService) { }
 
   ngOnInit() {
     this.getPostById();
+    this.getAllCategory();
   }
 
   getPostById(){
@@ -26,6 +32,15 @@ export class PostFullDetailComponent implements OnInit {
     }, error =>{
       console.log(error);
     });
+  }
+
+
+  getAllCategory(){
+    this.categoryService.findAllCategory().subscribe((categoryBE) => {
+      this.category = categoryBE;
+    }, error =>  {
+      console.log(error)
+    })
   }
 
 }
