@@ -7,7 +7,6 @@ import {UserService} from '../../service/user/user.service';
 import {Router} from '@angular/router';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
-import {formatNumber} from '@angular/common';
 
 
 @Component({
@@ -24,7 +23,7 @@ export class PostManagerComponent implements OnInit {
   posts!: Post[];
   post!: Post;
 
-  displayedColumns: string[] = ['id', 'avatarPost', 'title', 'action'];
+  displayedColumns: string[] = ['id', 'avatarPost', 'title', 'edit' ,'action'];
   dataSource!: MatTableDataSource<any>;
 
 
@@ -67,6 +66,16 @@ export class PostManagerComponent implements OnInit {
   deletePost(id: any) {
     this.postService.deletePost(id).subscribe(() => {
         this.findAllPostByUserId();
+        alert('Private')
+      }
+    );
+  }
+
+
+  changePostPublic(id: any){
+    this.postService.changePostPublic(id).subscribe(() => {
+        this.findAllPostByUserId();
+        alert('Public')
       }
     );
   }
