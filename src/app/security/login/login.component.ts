@@ -4,7 +4,6 @@ import {User} from '../../model/user';
 import {AuthService, Role} from '../../service/auth/auth.service';
 import {TokenService} from '../../service/auth/token.service';
 import {Router} from '@angular/router';
-import {JwtRespone} from '../../model/jwt-respone';
 import {SocialLoginService} from '../../service/login/social-login.service';
 
 @Component({
@@ -62,7 +61,7 @@ export class LoginComponent implements OnInit {
           this.status = 'Tài khoản đã bị chặn';
           this.router.navigate(['/login']).then(() => {
             window.location.reload();
-          })
+          });
         } else {
           this.authService.signIn(this.signInForm).subscribe(data => {
               console.log('data', data);
