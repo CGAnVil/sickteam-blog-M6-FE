@@ -68,9 +68,7 @@ export class PostCreateComponent implements OnInit {
     formData.append('status',this.formPostCreate.get('status').value);
     formData.append('avatarPost',this.formPostCreate.get('avatarPost').value);
     formData.append('user',this.idLogin);
-    // this.requestOptions = { data: {}, params: {} };
-    // this.requestOptions.data = formData;
-    // this.requestOptions.reportProgress = true;
+
 
     this.postService.createPostFormData(formData).subscribe( () =>  {
       alert('thanh cong');
