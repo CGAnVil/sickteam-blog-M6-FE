@@ -5,6 +5,8 @@ import {AuthService, Role} from '../../service/auth/auth.service';
 import {TokenService} from '../../service/auth/token.service';
 import {Router} from '@angular/router';
 import {SocialLoginService} from '../../service/login/social-login.service';
+import {UserStatus} from './user-status.enum';
+import {ToastService} from "../../toast/toast.service";
 
 @Component({
   selector: 'app-login',
@@ -30,19 +32,14 @@ export class LoginComponent implements OnInit {
   constructor(private authService: AuthService,
               private tokenService: TokenService,
               private router: Router,
-              private socialService: SocialLoginService) {
+              private toastService: ToastService
+              ) {
   }
 
   roles: string[] = [];
   name!: string;
 
   ngOnInit(): void {
-    // if (this.tokenService.getToken()) {
-    //   this.isLoggedIn = true;
-    //   this.roles = this.tokenService.getRoles();
-    //   this.name = this.tokenService.getName();
-    //
-    // }
   }
 
   ngSubmit() {
@@ -55,8 +52,9 @@ export class LoginComponent implements OnInit {
         if (JSON.stringify(user) == JSON.stringify(this.error1)) {
           this.status = 'Không tìm thấy tên người dùng';
         }
+        console.log(user.status.name === UserStatus.ACTIVE);
 
-        if (user.status == 'block') {
+        if (user.status.name === UserStatus.INACTIVE) {
           this.checkBlock = true;
           this.status = 'Tài khoản đã bị chặn';
           this.router.navigate(['/login']).then(() => {

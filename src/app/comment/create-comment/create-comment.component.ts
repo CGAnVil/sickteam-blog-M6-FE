@@ -95,16 +95,12 @@ export class CreateCommentComponent implements OnInit {
     this.comment.postCommentPost = {
       id: this.idPost
     };
-    if (this.idLogin != null) {
-      this.commentService.saveCommentPost(this.comment).subscribe(() => {
-        console.log('Create comment success');
-        this.router.navigateByUrl(`posts/details/${this.idPost}`);
-      }, error => {
-        console.log('Create comment fail');
-      });
-    } else {
-      console.log("Chua login");
-    }
+    this.commentService.saveCommentPost(this.comment).subscribe(() => {
+      console.log('Create comment success');
+      this.router.navigateByUrl(`posts/details/${this.idPost}`);
+    }, error => {
+      console.log('Create comment fail');
+    });
   }
 
   countLikeByIdPost(id: number) {

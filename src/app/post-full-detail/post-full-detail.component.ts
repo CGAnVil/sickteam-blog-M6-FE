@@ -1,11 +1,16 @@
-import {Component, OnInit} from '@angular/core';
-import {Post} from '../model/Post';
+import { Component, OnInit } from '@angular/core';
+import {Post} from "../model/Post";
 import {ActivatedRoute, ParamMap, Router} from '@angular/router';
-import {PostService} from '../service/post/post.service';
+import {PostService} from "../service/post/post.service";
+
+
 import {Comment} from '../model/comment';
 import {CommentService} from '../service/comment/comment.service';
 import {LikeService} from '../service/like/like.service';
 import {Like} from '../model/like';
+import {CategoryService} from '../service/category/category.service';
+import {Category} from '../model/Category';
+
 
 @Component({
   selector: 'app-post-full-detail',
@@ -13,6 +18,7 @@ import {Like} from '../model/like';
   styleUrls: ['./post-full-detail.component.css']
 })
 export class PostFullDetailComponent implements OnInit {
+
 
   post: Post;
 
@@ -25,6 +31,7 @@ export class PostFullDetailComponent implements OnInit {
   totalLike: number;
 
   comments: Comment[] = [];
+  category: Category[] = [];
 
   like: Like = {
     userLike: null,
@@ -36,7 +43,8 @@ export class PostFullDetailComponent implements OnInit {
               private commentService: CommentService,
               private router: Router,
               private activatedRoute: ActivatedRoute,
-              private likeService: LikeService) {
+              private likeService: LikeService,
+              private categoryService: CategoryService) {
     this.activatedRoute.paramMap.subscribe((paramMap: ParamMap) => {
       this.idPost = +paramMap.get('id');
       this.userLogin = JSON.parse(localStorage.getItem('userLogin'));
@@ -46,6 +54,7 @@ export class PostFullDetailComponent implements OnInit {
 
   ngOnInit() {
     this.getPostById();
+    this.getAllCategory();
   }
 
   getPostById() {
@@ -58,6 +67,17 @@ export class PostFullDetailComponent implements OnInit {
       console.log(error);
     });
   }
+
+
+
+  getAllCategory(){
+    this.categoryService.findAllCategory().subscribe((categoryBE) => {
+      this.category = categoryBE;
+    }, error =>  {
+      console.log(error)
+    })
+  }
+
 
   getAllCommentByPostId(id: number) {
     this.commentService.getAllCommentByPostId(id).subscribe(listComment => {

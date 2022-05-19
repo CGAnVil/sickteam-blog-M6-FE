@@ -42,11 +42,13 @@ export class PostService {
     return this.http.delete<void>(`http://localhost:8080/posts/changePostsPublic/${id}`)
   }
 
-
-
   createPostFormData(post?: any): Observable<any> {
     let headers = new HttpHeaders({ 'enctype': 'multipart/form-data'});
     return this.http.post('http://localhost:8080/posts/', post , {headers});
+  }
+
+  findAllPostCategory(id: any): Observable<Post[]> {
+    return this.http.get<Post[]>(`http://localhost:8080/posts/findCategory/${id}`)
   }
 
 

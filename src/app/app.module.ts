@@ -32,7 +32,12 @@ import { PostEditComponent } from './post-manage-by-user/post-edit/post-edit.com
 import { InfoEditComponent } from './unser-info-manage/info-edit/info-edit.component';
 import { InfoDetailComponent } from './unser-info-manage/info-detail/info-detail.component';
 import { PostFullDetailComponent } from './post-full-detail/post-full-detail.component';
+
+import { PostDetailCategoryComponent } from './post-detail-category/post-detail-category.component';
+
 import { CreateCommentComponent } from './comment/create-comment/create-comment.component';
+import {CKEditorModule} from '@ckeditor/ckeditor5-angular';
+
 
 @NgModule({
   declarations: [
@@ -50,7 +55,11 @@ import { CreateCommentComponent } from './comment/create-comment/create-comment.
     InfoEditComponent,
     InfoDetailComponent,
     PostFullDetailComponent,
+
+    PostDetailCategoryComponent,
+
     CreateCommentComponent
+
   ],
   imports: [
     BrowserModule,
@@ -71,7 +80,7 @@ import { CreateCommentComponent } from './comment/create-comment/create-comment.
     MatSortModule,
     MatToolbarModule,
     MatDialogModule,
-
+    CKEditorModule
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}
