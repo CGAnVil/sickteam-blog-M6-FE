@@ -9,7 +9,7 @@ export const environment = {
   firebase: {
     apiKey: 'AIzaSyDEwDar22B6rbt7jpyVI5mQkk20PJyk5lw',
     authDomain: 'organic-cat-350221.firebaseapp.com',
-    databaseURL: '<your-database-URL>',
+    databaseURL: 'https://testuploadfile-eacce-default-rtdb.firebaseio.com',
     projectId: 'organic-cat-350221',
     storageBucket: 'organic-cat-350221.appspot.com',
     messagingSenderId: '754609459743',

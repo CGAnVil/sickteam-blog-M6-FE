@@ -28,14 +28,15 @@
           <mat-error *ngIf="password.hasError('minlength')">Mật khẩu phải có ít nhất 5 ký tự</mat-error>
         </mat-form-field>
         <br>
-        <button mat-stroked-button id="login-button" class="mat-button-toggle-group btn-outline-success" [disabled]="checkBlock">Login
+        <button mat-stroked-button id="login-button" class="mat-button-toggle-group btn-outline-success" [disabled]="checkBlock">Đăng nhập
           <mat-icon color="secondary" matSuffix>arrow_right_alt</mat-icon>
+        </button> hoặc
+        <button mat-stroked-button id="login-google" class="mat-button-toggle-group btn-outline-success" (click)="loginGoogle()">Đăng nhập bằng google
         </button>
         <br>
         <br>
-        <a routerLink="/register">Bạn Chưa Có Tài Khoản ?</a>
+        <a routerLink="/register">Bạn Chưa Có Tài Khoản ?</a><br>
       </form>
-      <button (click)="login()" class="loginBtn loginBtn--google">Login with Google</button>
     </div>
   </div>
 </div>
