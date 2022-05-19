@@ -4,6 +4,8 @@ import {ActivatedRoute, ParamMap, Router} from '@angular/router';
 import {PostService} from '../service/post/post.service';
 import {Comment} from '../model/comment';
 import {CommentService} from '../service/comment/comment.service';
+import {LikeService} from '../service/like/like.service';
+import {Like} from '../model/like';
 
 @Component({
   selector: 'app-post-full-detail',
@@ -20,13 +22,21 @@ export class PostFullDetailComponent implements OnInit {
 
   idPost: any;
 
+  totalLike: number;
+
   comments: Comment[] = [];
+
+  like: Like = {
+    userLike: null,
+    postLike: null
+  };
 
   constructor(private route: ActivatedRoute,
               private postService: PostService,
               private commentService: CommentService,
               private router: Router,
-              private activatedRoute: ActivatedRoute) {
+              private activatedRoute: ActivatedRoute,
+              private likeService: LikeService) {
     this.activatedRoute.paramMap.subscribe((paramMap: ParamMap) => {
       this.idPost = +paramMap.get('id');
       this.userLogin = JSON.parse(localStorage.getItem('userLogin'));
@@ -43,6 +53,7 @@ export class PostFullDetailComponent implements OnInit {
     this.postService.findPostById(id).subscribe((postFormBE) => {
       this.post = postFormBE;
       this.getAllCommentByPostId(id);
+      this.countLikeByIdPost(id);
     }, error => {
       console.log(error);
     });
@@ -64,5 +75,25 @@ export class PostFullDetailComponent implements OnInit {
     }, error => {
       console.log('Delete comment fail');
     });
+  }
+
+  countLikeByIdPost(id: number) {
+    this.likeService.countLikeByIdPost(id).subscribe((totalLike) => {
+      this.totalLike = totalLike;
+      console.log("Get total like success");
+    }, error => {
+      console.log("Get total like fail");
+    })
+  }
+
+  likeUnlikePost(idPost: number, idUser: number) {
+    // idPost = this.idPost;
+    // idUser = this.idLogin;
+    this.likeService.likeUnlikePost(idPost, idUser).subscribe((totalLikeBE) => {
+      this.totalLike = totalLikeBE;
+      console.log("Like unlike success");
+    }, error => {
+      console.log("Like unlike success");
+    })
   }
 }

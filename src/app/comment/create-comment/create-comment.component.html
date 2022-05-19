@@ -37,15 +37,18 @@
                     <form [formGroup]="commentForm" (ngSubmit)="createComment()">
                       <div class="card-body">
                         <div class="form-group">
-                          <label for="content"><b>Viết bình luận</b></label>
+<!--                          <label for="content"><b>Viết bình luận</b></label>-->
                           <textarea type="text" class="form-control"
                                     id="content"
                                     formControlName="content"
-                                    placeholder="Enter content">
+                                    placeholder="Viết bình luận ...">
                           </textarea>
                         </div>
-                        <div>
-                          <button type="submit" class="btn btn-primary">Gửi</button>
+                        <div class="row">
+                          <div class="col-md-6">
+                            <button type="submit" class="btn btn-primary"><i class="fas fa-comment"></i></button>&nbsp;
+                            <button class="btn btn-primary" routerLink="/posts/details/{{post.id}}"><i class="fa-solid fa-rotate-left"></i></button>
+                          </div>
                         </div>
                       </div>
                     </form>

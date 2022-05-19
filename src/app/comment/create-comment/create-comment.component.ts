@@ -51,8 +51,8 @@ export class CreateCommentComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.idLogin = localStorage.getItem('idLogin');
-    this.user = JSON.parse(<string> localStorage.getItem('userLogin'));
+    this.user = JSON.parse(localStorage.getItem('userLogin'));
+    this.idLogin = (this.user.id);
     this.findUser(this.user.id);
   }
 
