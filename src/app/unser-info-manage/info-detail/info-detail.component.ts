@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {User} from "../../model/user";
 import {UserService} from "../../service/user/user.service";
 
+
 @Component({
   selector: 'app-info-detail',
   templateUrl: './info-detail.component.html',
@@ -9,13 +10,22 @@ import {UserService} from "../../service/user/user.service";
 })
 export class InfoDetailComponent implements OnInit {
 
-  user: User;
+  user!: User;
+  idLogin: any;
 
-  constructor() {
+
+  constructor(private userService: UserService) {
   }
 
   ngOnInit() {
-    this.user = JSON.parse(localStorage.getItem('userLogin'));
+  const id = this.findUser();
+  this.userService.findUserById(id);
+  }
+
+  public findUser(): number{
+    this.user = JSON.parse(<string> localStorage.getItem('userLogin'));
+    this.idLogin = this.user.id;
+    return this.user.id;
   }
 
 
