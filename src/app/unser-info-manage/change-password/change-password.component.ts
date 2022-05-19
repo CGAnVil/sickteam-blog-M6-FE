@@ -71,11 +71,13 @@ export class ChangePasswordComponent implements OnInit {
             console.log('data trong if', response);
             console.log('ischangePass', this.isChangePassed);
             this.status = 'Change Password success!';
+            this.router.navigateByUrl('/login');
           } else {
             this.status = 'Change Password fail!';
             this.isChangePassed = false;
             this.isChecking = false;
           }
+
         }, error => {
           alert('khong duoc');
           this.status = 'Loi may chu hoac loi khong xac dinh!';

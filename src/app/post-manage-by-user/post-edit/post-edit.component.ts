@@ -109,11 +109,7 @@ export class PostEditComponent implements OnInit {
     formData.append('category', this.formPostEdit.get('category').value);
     formData.append('status', this.formPostEdit.get('status').value);
     formData.append('user', this.idLogin);
-    const files = (document.getElementById('avatarPost') as HTMLInputElement).files;
-    if (files.length > 0) {
-      formData.append('avatarPost', files[0]);
-    }
-
+    formData.append('avatarPost', this.formPostEdit.get('avatarPost').value);
     this.postService.editPost(this.post.id, formData).subscribe(() => {
       this.toastService.showMessageSuccess('success','Chỉnh sửa bài viết thành công');
       this.router.navigateByUrl("/user");
