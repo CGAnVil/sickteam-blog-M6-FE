@@ -19,11 +19,11 @@
         <li class="nav-item">
           <a class="nav-link" >Contact Us</a>
         </li>
-        <li class="nav-item" *ngIf="!checkLogin">
+        <li class="nav-item" *ngIf="!currentUser">
           <a class="nav-link" routerLink="login">Login</a>
         </li>
-        <li class="nav-item" *ngIf="checkLogin" >
-          <a id="userInfo" [matMenuTriggerFor]="menu" class="nav-link" style="color: blue"><i>hi, {{nameLogin}}</i></a>
+        <li class="nav-item" *ngIf="currentUser" >
+          <a id="userInfo" [matMenuTriggerFor]="menu" class="nav-link" style="color: blue"><i>hi, {{currentUser.fullName}}</i></a>
           <mat-menu #menu="matMenu">
             <a mat-menu-item routerLink="/user">Your Post</a>
             <a mat-menu-item routerLink="/change-password">Change password</a>

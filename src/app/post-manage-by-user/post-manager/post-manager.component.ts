@@ -43,6 +43,7 @@ export class PostManagerComponent implements OnInit {
 
   ngOnInit() {
     this.idLogin = localStorage.getItem('idLogin');
+
     this.user = JSON.parse(<string> localStorage.getItem('userLogin'));
     this.findUser(this.user.id);
     console.log('id',this.user.id);

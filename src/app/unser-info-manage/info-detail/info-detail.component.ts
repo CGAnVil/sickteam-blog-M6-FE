@@ -19,7 +19,9 @@ export class InfoDetailComponent implements OnInit {
 
   ngOnInit() {
   const id = this.findUser();
-  this.userService.findUserById(id);
+  this.userService.findUserById(id).subscribe(user1 =>{
+    this.user = user1;
+  });
   }
 
   public findUser(): number{

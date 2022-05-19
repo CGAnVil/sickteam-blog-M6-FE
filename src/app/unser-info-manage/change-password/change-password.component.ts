@@ -32,7 +32,7 @@ export class ChangePasswordComponent implements OnInit {
     private authService: AuthService,
     private router: Router,
     private tokenService: TokenService,
-    private toastService: ToastService) {
+    private toastService: ToastService ) {
   }
 
   ngOnInit() {
@@ -76,6 +76,7 @@ export class ChangePasswordComponent implements OnInit {
             localStorage.removeItem('userLogin');
             localStorage.removeItem('roleLogin');
             localStorage.removeItem('nameLogin');
+            this.authService.logout();
             this.router.navigateByUrl('/login');
           } else {
             this.status = 'Change Password fail!';

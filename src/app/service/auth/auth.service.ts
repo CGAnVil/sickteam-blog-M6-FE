@@ -3,7 +3,7 @@ import {environment} from '../../../environments/environment';
 import {User} from '../../model/user';
 import {HttpClient} from '@angular/common/http';
 import {Router} from '@angular/router';
-import {Observable} from 'rxjs';
+import {BehaviorSubject, Observable} from 'rxjs';
 import {SignInForm} from '../../model/sign-in-form';
 import {SignUpForm} from '../../model/sign-up-form';
 import {JwtRespone} from '../../model/jwt-respone';
@@ -12,6 +12,7 @@ import {UserService} from '../user/user.service';
 import {ResponeBody} from '../../model/respone-body';
 import {ChangePassword} from '../../model/change-password';
 import {SignInRequest} from '../../model/sign-in-request';
+import {map} from "rxjs/operators";
 
 export enum Role {
   Guess = 'GUESS',
@@ -28,6 +29,8 @@ const ROLE_KEY = 'Role_Key';
   providedIn: 'root'
 })
 export class AuthService {
+  public currentUserSubject: BehaviorSubject<any>;
+  public currentUser: Observable<any>;
   nameLogin!: string;
   role!: Role;
   name!: string;
@@ -43,7 +46,10 @@ export class AuthService {
   constructor(private httpClient: HttpClient,
               private router: Router,
               private tokenService: TokenService,
-              private userService: UserService) {
+              private userService: UserService,
+              ) {
+    this.currentUserSubject = new BehaviorSubject<any>(JSON.parse(localStorage.getItem('user')));
+    this.currentUser = this.currentUserSubject.asObservable();
   }
 
   public signUp(signUp: SignUpForm): Observable<any> {
@@ -51,7 +57,12 @@ export class AuthService {
   }
 
   public signIn(signIn: SignInForm): Observable<JwtRespone> {
-    return this.httpClient.post<JwtRespone>(API_AUTH + '/login', signIn);
+    return this.httpClient.post<JwtRespone>(API_AUTH + '/login', signIn)
+      .pipe(map(user => {
+        localStorage.setItem('user', JSON.stringify(user));
+        this.currentUserSubject.next(user);
+        return user;
+      }));
   }
 
   public signInSocial(signIn: SignInRequest): Observable<JwtRespone> {
@@ -79,6 +90,8 @@ export class AuthService {
 
 
   logout() {
+    localStorage.removeItem('user');
+    this.currentUserSubject.next(null);
     this.router.navigate(['/login']);
   }
 
