@@ -73,6 +73,9 @@ export class ChangePasswordComponent implements OnInit {
             console.log('data trong if', response);
             console.log('ischangePass', this.isChangePassed);
             this.toastService.showMessageSuccess('success','Thay đổi mật khẩu thành công');
+            localStorage.removeItem('userLogin');
+            localStorage.removeItem('roleLogin');
+            localStorage.removeItem('nameLogin');
             this.router.navigateByUrl('/login');
           } else {
             this.status = 'Change Password fail!';
