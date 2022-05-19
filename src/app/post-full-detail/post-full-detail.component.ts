@@ -87,8 +87,6 @@ export class PostFullDetailComponent implements OnInit {
   }
 
   likeUnlikePost(idPost: number, idUser: number) {
-    // idPost = this.idPost;
-    // idUser = this.idLogin;
     this.likeService.likeUnlikePost(idPost, idUser).subscribe((totalLikeBE) => {
       this.totalLike = totalLikeBE;
       console.log("Like unlike success");

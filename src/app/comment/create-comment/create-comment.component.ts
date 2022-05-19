@@ -7,6 +7,7 @@ import {Comment} from '../../model/comment';
 import {FormControl, FormGroup} from '@angular/forms';
 import {User} from '../../model/user';
 import {UserService} from '../../service/user/user.service';
+import {LikeService} from '../../service/like/like.service';
 
 @Component({
   selector: 'app-create-comment',
@@ -23,6 +24,8 @@ export class CreateCommentComponent implements OnInit {
   user!: User;
 
   idPost: any;
+
+  totalLike: number;
 
   comment: Comment = {
     userCommentPost: null,
@@ -43,7 +46,8 @@ export class CreateCommentComponent implements OnInit {
               private commentService: CommentService,
               private activatedRoute: ActivatedRoute,
               private userService: UserService,
-              private router: Router) {
+              private router: Router,
+              private likeService: LikeService) {
     this.activatedRoute.paramMap.subscribe((paramMap: ParamMap) => {
       this.idPost = +paramMap.get('id');
       this.getPostById(this.idPost);
@@ -60,6 +64,7 @@ export class CreateCommentComponent implements OnInit {
     this.postService.findPostById(id).subscribe((postFormBE) => {
       this.post = postFormBE;
       this.getAllCommentByPostId(id);
+      this.countLikeByIdPost(id);
     }, error => {
       console.log(error);
     });
@@ -100,5 +105,14 @@ export class CreateCommentComponent implements OnInit {
     } else {
       console.log("Chua login");
     }
+  }
+
+  countLikeByIdPost(id: number) {
+    this.likeService.countLikeByIdPost(id).subscribe((totalLike) => {
+      this.totalLike = totalLike;
+      console.log("Get total like success");
+    }, error => {
+      console.log("Get total like fail");
+    })
   }
 }
