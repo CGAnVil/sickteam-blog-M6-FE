@@ -7,6 +7,7 @@ import {Router} from '@angular/router';
 import {UserStatus} from './user-status.enum';
 import * as firebase from 'firebase';
 import {AngularFireAuth} from '@angular/fire/auth';
+import {SocialLoginService} from '../../service/login/social-login.service';
 
 @Component({
   selector: 'app-login',
@@ -32,6 +33,7 @@ export class LoginComponent implements OnInit {
   constructor(private authService: AuthService,
               private tokenService: TokenService,
               private router: Router,
+              private socialService: SocialLoginService,
               public afAuth: AngularFireAuth) {
   }
 
@@ -53,16 +55,18 @@ export class LoginComponent implements OnInit {
       this.form.password
     );
     this.authService.findUserByUsername(this.form.username).subscribe(user => {
-        console.log(user);
-        if (JSON.stringify(user) == JSON.stringify(this.error1)) {
-          this.status = 'Không tìm thấy tên người dùng';
-        }
-        console.log(user.status.name === UserStatus.ACTIVE);
+      console.log(user);
+      if (JSON.stringify(user) == JSON.stringify(this.error1)) {
+        this.status = 'Không tìm thấy tên người dùng';
+      }
+      console.log(user.status.name === UserStatus.ACTIVE);
 
-        if (user.status.name === UserStatus.INACTIVE) {
-          this.checkBlock = true;
-          this.status = 'Tài khoản đã bị chặn';
-          this.router.navigate(['/login'])
+      if (user.status.name === UserStatus.INACTIVE) {
+        this.checkBlock = true;
+        this.status = 'Tài khoản đã bị chặn';
+        this.router.navigate(['/login']).then(() => {
+          window.location.reload();
+          })
         } else {
           this.authService.signIn(this.signInForm).subscribe(data => {
               console.log('data', data);
@@ -86,7 +90,9 @@ export class LoginComponent implements OnInit {
                 localStorage.setItem("userLogin", JSON.stringify(this.user));
                 localStorage.setItem("nameLogin", this.nameLogin);
                 localStorage.setItem("roleLogin", this.role);
-                this.router.navigate([''])
+                this.router.navigate(['']).then(() => {
+                  window.location.reload();
+                });
 
               } else {
                 this.isLoggedIn = false;
