@@ -113,6 +113,9 @@ export class PostEditComponent implements OnInit {
     this.postService.editPost(this.post.id, formData).subscribe(() => {
       this.toastService.showMessageSuccess('success','Chỉnh sửa bài viết thành công');
       this.router.navigateByUrl("/user");
+    }, error => {
+      this.toastService.showMessageSuccess('success','Chỉnh sửa bài viết thất bại');
+      this.router.navigateByUrl("/user");
     });
   }
 
