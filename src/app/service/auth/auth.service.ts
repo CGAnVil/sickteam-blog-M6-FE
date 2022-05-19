@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {environment} from '../../../environments/environment';
 import {User} from '../../model/user';
 import {HttpClient} from '@angular/common/http';
@@ -14,14 +14,16 @@ import {ChangePassword} from '../../model/change-password';
 import {SignInRequest} from '../../model/sign-in-request';
 
 export enum Role {
-  Guess= 'GUESS',
+  Guess = 'GUESS',
   User = 'USER',
   Admin = 'ADMIN'
 }
+
 const API_AUTH = environment.apiAuth;
 const TOKEN_KEY = 'Token_Key';
 const NAME_KEY = 'Name_Key';
 const ROLE_KEY = 'Role_Key';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -41,7 +43,8 @@ export class AuthService {
   constructor(private httpClient: HttpClient,
               private router: Router,
               private tokenService: TokenService,
-              private userService: UserService) { }
+              private userService: UserService) {
+  }
 
   public signUp(signUp: SignUpForm): Observable<any> {
     return this.httpClient.post<any>(API_AUTH + '/register', signUp);
@@ -72,7 +75,6 @@ export class AuthService {
   public onSubmit(signIn: SignInForm) {
 
 
-
   }
 
 
@@ -84,8 +86,9 @@ export class AuthService {
     // return true if the user enter correct user name and password
     return this.isLoggedIn;
   }
-  findUserByUsername(username: any) {
-    return this.httpClient.get<any>(`http://localhost:8080/api/auth/findUserByUsername/${username}`);
+
+  findUserByUsername(username: string): Observable<User> {
+    return this.httpClient.get<User>(`http://localhost:8080/api/auth/findUserByUsername/${username}`);
   }
 
   changePassword(user: ChangePassword): Observable<ResponeBody> {

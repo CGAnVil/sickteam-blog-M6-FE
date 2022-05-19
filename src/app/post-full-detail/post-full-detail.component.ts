@@ -1,9 +1,14 @@
+
 import {Component, OnInit} from '@angular/core';
 import {Post} from '../model/Post';
 import {ActivatedRoute, ParamMap, Router} from '@angular/router';
 import {PostService} from '../service/post/post.service';
+
 import {Comment} from '../model/comment';
 import {CommentService} from '../service/comment/comment.service';
+import {CategoryService} from '../service/category/category.service';
+import {Category} from '../model/Category';
+
 
 @Component({
   selector: 'app-post-full-detail',
@@ -11,6 +16,7 @@ import {CommentService} from '../service/comment/comment.service';
   styleUrls: ['./post-full-detail.component.css']
 })
 export class PostFullDetailComponent implements OnInit {
+
 
   post: Post;
 
@@ -21,12 +27,14 @@ export class PostFullDetailComponent implements OnInit {
   idPost: any;
 
   comments: Comment[] = [];
+  category: Category[] = [];
 
   constructor(private route: ActivatedRoute,
+
               private postService: PostService,
               private commentService: CommentService,
               private router: Router,
-              private activatedRoute: ActivatedRoute) {
+              private activatedRoute: ActivatedRoute,private categoryService: CategoryService) {
     this.activatedRoute.paramMap.subscribe((paramMap: ParamMap) => {
       this.idPost = +paramMap.get('id');
       this.userLogin = JSON.parse(localStorage.getItem('userLogin'));
@@ -34,8 +42,10 @@ export class PostFullDetailComponent implements OnInit {
     });
   }
 
+
   ngOnInit() {
     this.getPostById();
+    this.getAllCategory();
   }
 
   getPostById() {
@@ -47,6 +57,17 @@ export class PostFullDetailComponent implements OnInit {
       console.log(error);
     });
   }
+
+
+
+  getAllCategory(){
+    this.categoryService.findAllCategory().subscribe((categoryBE) => {
+      this.category = categoryBE;
+    }, error =>  {
+      console.log(error)
+    })
+  }
+
 
   getAllCommentByPostId(id: number) {
     this.commentService.getAllCommentByPostId(id).subscribe(listComment => {
@@ -65,4 +86,5 @@ export class PostFullDetailComponent implements OnInit {
       console.log('Delete comment fail');
     });
   }
+
 }

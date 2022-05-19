@@ -1,3 +1,4 @@
+
 <!-- Banner Ends Here -->
 <div class="heading-page header-text">
   <section class="page-heading">
@@ -20,40 +21,43 @@
       <div class="col-lg-8">
         <div class="all-blog-posts">
           <div class="row">
-            <div class="col-lg-12">
+            <div class="col-lg-12" *ngFor="let posts of post1">
               <div class="blog-post">
                 <div class="blog-thumb">
-                  <img height="340" width="770" src="http://localhost:8080/image/{{post.avatarPost}}"/></div>
+                  <img height="340" width="770" src="http://localhost:8080/image/{{posts.avatarPost}}"/></div>
                 <div class="down-content">
-                  <span><a href="#"><strong>{{post.title}}</strong></a></span>
-                  <p>{{post.description}}</p>
-                  <p [innerHTML]="post.content"></p>
+                  <span><a routerLink="/posts/details/{{posts.id}}"><strong>{{posts.title}}</strong></a></span>
                   <ul class="post-info">
-                    <li><a href="#">{{ post?.user?.fullName }}</a></li>
-                    <li><a href="#">{{post.dateCreate | date:'MM/dd/yyyy'}}</a></li>
-                    <li><a routerLink="/createComment/{{post.id}}" >{{comments.length}}&nbsp;<i class="fas fa-comment"></i></a></li>
+                    <li><a href="#">{{ posts?.user?.fullName }}</a></li>
+                    <li><a href="#">{{posts.dateCreate}}</a></li>
+                    <li><a href="#">comment</a></li>
                   </ul>
-                  <div class="comment mt-4 text-justify float-left">
-                    <ng-container *ngFor="let cmt of comments">
-                      <p>{{cmt.content}}</p>
-                      <ul class="post-info">
-                        <li>
-                          <a href="#"><img style="border-radius: 10px"
-                                           src="http://localhost:8080/image/{{cmt.userCommentPost.avatar}}"/></a>
-                        </li>
-                        <li>
-                          <a href="#">{{cmt.userCommentPost.userName}}</a>
-                        </li>
-                        <li [hidden]="cmt.userCommentPost.id != idLogin">
-                          <a routerLink="#" (click)="deleteComment(cmt.id)"><i class="fas fa-trash"></i></a>
-                        </li>
-                        <!--                        <li><a routerLink="#"><i class="fas fa-comment"></i></a></li>-->
-                      </ul>
-                    </ng-container>
+                  <p>{{posts.description}}</p>
+                  <div class="post-options">
+                    <div class="row">
+                      <div class="col-6">
+                        <ul class="post-tags">
+                          <li><i class="fa fa-tags"></i></li>
+                          <li><a href="#">{{posts?.category?.name}}</a></li>
+                        </ul>
+                      </div>
+                      <div class="col-6">
+                        <ul class="post-share">
+                          <li><i class="fa fa-share-alt"></i></li>
+                          <li><a href="#">Facebook</a>,</li>
+                          <li><a href="#"> Twitter</a></li>
+                        </ul>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
+            <!--            <div class="col-lg-12">-->
+            <!--              <div class="main-button">-->
+            <!--                <a href="blog.html">View All Posts</a>-->
+            <!--              </div>-->
+            <!--            </div>-->
           </div>
         </div>
       </div>
@@ -86,11 +90,11 @@
             <div class="col-lg-12">
               <div class="sidebar-item categories">
                 <div class="sidebar-heading">
-                  <h2>Thể Loại</h2>
+                  <h2>Thể Loại </h2>
                 </div>
-                <div class="content">
+                <div class="content" >
                   <ul *ngFor="let ct of category">
-                    <li><a href="#">* {{ct.name}}</a></li>
+                    <li><a routerLink="posts/details/category/{{ct.id}}">* {{ct.name}}</a></li>
                   </ul>
                 </div>
               </div>
@@ -101,7 +105,6 @@
     </div>
   </div>
 </section>
-
 
 
 

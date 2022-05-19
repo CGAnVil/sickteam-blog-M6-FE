@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {Post} from '../../model/Post';
-import {Status} from '../../model/Status';
+import {UserStatus} from '../../model/user-status';
 import {User} from '../../model/user';
 import {PostService} from '../../service/post/post.service';
 import {UserService} from '../../service/user/user.service';
@@ -11,9 +11,8 @@ import {HttpClient} from '@angular/common/http';
 import {Router} from '@angular/router';
 import {Category} from '../../model/Category';
 import {CategoryService} from '../../service/category/category.service';
+import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
-
-declare var CKEDITOR: any;
 @Component({
   selector: 'app-post-create',
   templateUrl: './post-create.component.html',
@@ -25,11 +24,11 @@ export class PostCreateComponent implements OnInit {
   content!: string;
 
 
-  formPostCreate!: FormGroup
+  formPostCreate!: FormGroup;
   posts!: Post[];
-  status!: Status[];
+  status!: UserStatus[];
   categories!: Category[];
-
+  public Editor = ClassicEditor;
 
 
   constructor(private postService: PostService,
@@ -52,9 +51,8 @@ export class PostCreateComponent implements OnInit {
       category: [''],
       status: [''],
       avatarPost: [''],
-      user:[''],
-    })
-    CKEDITOR.replace('contentCreate');
+      user: [''],
+    });
     this.idLogin = localStorage.getItem('idLogin');
     this.user = JSON.parse(<string> localStorage.getItem('userLogin'));
     this.findUser(this.user.id);
@@ -62,15 +60,16 @@ export class PostCreateComponent implements OnInit {
   }
 
 
-  createPost(){
+  createPost() {
     const formData: FormData = new FormData();
-    formData.append('title',this.formPostCreate.get('title').value);
-    formData.append('description',this.formPostCreate.get('description').value);
-    formData.append('content',CKEDITOR.instances['contentCreate'].getData());
-    formData.append('category',this.formPostCreate.get('category').value);
-    formData.append('status',this.formPostCreate.get('status').value);
-    formData.append('avatarPost',this.formPostCreate.get('avatarPost').value);
-    formData.append('user',this.idLogin);
+    formData.append('title', this.formPostCreate.get('title').value);
+    formData.append('description', this.formPostCreate.get('description').value);
+    // formData.append('content',CKEDITOR.instances['contentCreate'].getData());
+    formData.append('content',  this.formPostCreate.get('content').value);
+    formData.append('category', this.formPostCreate.get('category').value);
+    formData.append('status', this.formPostCreate.get('status').value);
+    formData.append('avatarPost', this.formPostCreate.get('avatarPost').value);
+    formData.append('user', this.idLogin);
 
 
     this.postService.createPostFormData(formData).subscribe( () =>  {
