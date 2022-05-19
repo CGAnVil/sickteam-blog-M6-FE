@@ -31,6 +31,7 @@ export class PostEditComponent implements OnInit {
     status: new FormControl(''),
     avatarPost: new FormControl('')
   });
+
   status: UserStatus[];
   categories: Category[];
   public Editor = ClassicEditor;
@@ -52,6 +53,8 @@ export class PostEditComponent implements OnInit {
     this.getPostById();
     this.getAllCategory();
     this.getAllStatus();
+    this.user = JSON.parse(localStorage.getItem('userLogin'));
+    this.idLogin = this.user.id;
   }
 
   getPostById() {
@@ -103,6 +106,7 @@ export class PostEditComponent implements OnInit {
     formData.append('content', '');
     formData.append('category', this.formPostEdit.get('category').value);
     formData.append('status', this.formPostEdit.get('status').value);
+    formData.append('user', this.idLogin);
     const files = (document.getElementById('avatarPost') as HTMLInputElement).files;
     if (files.length > 0) {
       formData.append('avatarPost', files[0]);
@@ -119,5 +123,6 @@ export class PostEditComponent implements OnInit {
       this.formPostEdit.get('avatarPost').setValue(file);
       console.log(file);
     }
+
   }
 }
