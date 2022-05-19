@@ -5,6 +5,7 @@ import {AuthService} from '../../service/auth/auth.service';
 import {Router} from '@angular/router';
 import {TokenService} from '../../service/auth/token.service';
 import {ResponeBody} from '../../model/respone-body';
+import {ToastService} from "../../toast/toast.service";
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
@@ -30,7 +31,8 @@ export class ChangePasswordComponent implements OnInit {
     private formBuilder: FormBuilder,
     private authService: AuthService,
     private router: Router,
-    private tokenService: TokenService) {
+    private tokenService: TokenService,
+    private toastService: ToastService) {
   }
 
   ngOnInit() {
@@ -70,12 +72,21 @@ export class ChangePasswordComponent implements OnInit {
             this.isChangePassed = true;
             console.log('data trong if', response);
             console.log('ischangePass', this.isChangePassed);
+
+            this.toastService.showMessageSuccess('success','Thay đổi mật khẩu thành công');
+            localStorage.removeItem('userLogin');
+            localStorage.removeItem('roleLogin');
+            localStorage.removeItem('nameLogin');
+            this.router.navigateByUrl('/login');
+
             this.status = 'Đổi mật khẩu thành công!';
+
           } else {
             this.status = 'Đổi mật khẩu thất bại!';
             this.isChangePassed = false;
             this.isChecking = false;
           }
+
         }, error => {
           alert('khong duoc');
           this.status = 'Loi may chu hoac loi khong xac dinh!';

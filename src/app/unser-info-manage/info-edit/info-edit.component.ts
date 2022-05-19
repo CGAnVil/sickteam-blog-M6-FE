@@ -2,7 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {User} from "../../model/user";
 import {FormBuilder, FormControl, FormGroup} from "@angular/forms";
 import {UserService} from "../../service/user/user.service";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
+import {ToastService} from "../../toast/toast.service";
 
 @Component({
   selector: 'app-info-edit',
@@ -23,7 +24,9 @@ export class InfoEditComponent implements OnInit {
 
 
   constructor(private userService: UserService,
-              private route: ActivatedRoute) {
+              private route: ActivatedRoute,
+              private toastService: ToastService,
+              private router: Router) {
   }
 
   ngOnInit() {
@@ -63,7 +66,8 @@ export class InfoEditComponent implements OnInit {
     formData.append('avatar', this.formEditUser.get('avatar').value);
 
     this.userService.editProfile(this.user.id, formData).subscribe(() => {
-      alert("Chinh sua thanh cong");
+      this.toastService.showMessageSuccess('success','Thay đổi thành công');
+      this.router.navigateByUrl('/login');
     })
 
   }

@@ -7,8 +7,9 @@ import {UserService} from '../../service/user/user.service';
 import {Router} from '@angular/router';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
+import {ToastService} from "../../toast/toast.service";
 
-
+declare var Swal: any;
 @Component({
   selector: 'app-post-manager',
   templateUrl: './post-manager.component.html',
@@ -17,6 +18,7 @@ import {MatSort} from '@angular/material/sort';
 export class PostManagerComponent implements OnInit {
   idLogin!: any;
   user!: User;
+  isConfirm: boolean;
 
   nameLogin!: any;
 
@@ -35,7 +37,7 @@ export class PostManagerComponent implements OnInit {
 
   constructor(private postService: PostService,
               private userService: UserService,
-              private router: Router
+              private router: Router, private toastService: ToastService
   ) {
   }
 
@@ -64,20 +66,54 @@ export class PostManagerComponent implements OnInit {
 
 
   deletePost(id: any) {
-    this.postService.deletePost(id).subscribe(() => {
-        this.findAllPostByUserId();
-
+    Swal.fire({
+      title: 'Xác nhận đổi trạng thái bài viết sang Private',
+      text: '',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Chuyển đổi'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.postService.deletePost(id).subscribe(() => {
+          this.findAllPostByUserId();
+        }, error => {
+          console.log('Block error');
+        });
+        Swal.fire(
+          'Chuyển sang Private',
+          'Trạng thái bài viết đã chuyễn sang Private',
+          'success'
+        );
       }
-    );
+    });
   }
 
 
   changePostPublic(id: any){
-    this.postService.changePostPublic(id).subscribe(() => {
-        this.findAllPostByUserId();
-
+    Swal.fire({
+      title: 'Xác nhận đổi trạng thái bài viết sang Public',
+      text: '',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Chuyển đổi'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.postService.changePostPublic(id).subscribe(() => {
+          this.findAllPostByUserId();
+          }, error => {
+          console.log('Block error');
+        });
+        Swal.fire(
+          'Chuyển sang Public',
+          'Trạng thái bài viết đã chuyễn sang Public',
+          'success'
+        );
       }
-    );
+    });
   }
 
 

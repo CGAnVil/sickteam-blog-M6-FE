@@ -12,6 +12,7 @@ import {UserService} from '../../service/user/user.service';
 import {AuthService} from '../../service/auth/auth.service';
 import {HttpClient} from '@angular/common/http';
 import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+import {ToastService} from "../../toast/toast.service";
 
 @Component({
   selector: 'app-post-edit',
@@ -31,6 +32,7 @@ export class PostEditComponent implements OnInit {
     status: new FormControl(''),
     avatarPost: new FormControl('')
   });
+
   status: UserStatus[];
   categories: Category[];
   public Editor = ClassicEditor;
@@ -45,6 +47,7 @@ export class PostEditComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private categoryService: CategoryService,
+    private toastService: ToastService
   ) {
   }
 
@@ -52,6 +55,8 @@ export class PostEditComponent implements OnInit {
     this.getPostById();
     this.getAllCategory();
     this.getAllStatus();
+    this.user = JSON.parse(localStorage.getItem('userLogin'));
+    this.idLogin = this.user.id;
   }
 
   getPostById() {
@@ -100,16 +105,17 @@ export class PostEditComponent implements OnInit {
     const formData: FormData = new FormData();
     formData.append('title', this.formPostEdit.get('title').value);
     formData.append('description', this.formPostEdit.get('description').value);
-    formData.append('content', '');
+    formData.append('content', this.formPostEdit.get('content').value);
     formData.append('category', this.formPostEdit.get('category').value);
     formData.append('status', this.formPostEdit.get('status').value);
-    const files = (document.getElementById('avatarPost') as HTMLInputElement).files;
-    if (files.length > 0) {
-      formData.append('avatarPost', files[0]);
-    }
-
+    formData.append('user', this.idLogin);
+    formData.append('avatarPost', this.formPostEdit.get('avatarPost').value);
     this.postService.editPost(this.post.id, formData).subscribe(() => {
-      alert('Chinh sua thanh cong');
+      this.toastService.showMessageSuccess('success','Chỉnh sửa bài viết thành công');
+      this.router.navigateByUrl("/user");
+    }, error => {
+      this.toastService.showMessageSuccess('success','Chỉnh sửa bài viết thất bại');
+      this.router.navigateByUrl("/user");
     });
   }
 
@@ -119,5 +125,6 @@ export class PostEditComponent implements OnInit {
       this.formPostEdit.get('avatarPost').setValue(file);
       console.log(file);
     }
+
   }
 }

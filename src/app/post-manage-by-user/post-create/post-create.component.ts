@@ -12,6 +12,7 @@ import {Router} from '@angular/router';
 import {Category} from '../../model/Category';
 import {CategoryService} from '../../service/category/category.service';
 import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+import {ToastService} from "../../toast/toast.service";
 
 @Component({
   selector: 'app-post-create',
@@ -38,7 +39,8 @@ export class PostCreateComponent implements OnInit {
               private auth: AuthService,
               private Http: HttpClient,
               private router: Router,
-              private categoryService: CategoryService
+              private categoryService: CategoryService,
+              private toastService: ToastService
               ) { }
 
   ngOnInit() {
@@ -53,7 +55,8 @@ export class PostCreateComponent implements OnInit {
       avatarPost: [''],
       user: [''],
     });
-    this.idLogin = localStorage.getItem('idLogin');
+    this.user = JSON.parse(localStorage.getItem('userLogin'));
+    this.idLogin = this.user.id;
     this.user = JSON.parse(<string> localStorage.getItem('userLogin'));
     this.findUser(this.user.id);
 
@@ -73,8 +76,9 @@ export class PostCreateComponent implements OnInit {
 
 
     this.postService.createPostFormData(formData).subscribe( () =>  {
-      alert('thanh cong');
-      // this.router.navigateByUrl('/user');
+      this.toastService.showMessageSuccess('' +
+        'success', "Tạo bài viết mới thành công")
+      this.router.navigateByUrl('/user');
     });
     console.log(formData.getAll('name'));
   }

@@ -3,6 +3,8 @@ import {SignUpForm} from '../../model/sign-up-form';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 import {AuthService} from '../../service/auth/auth.service';
+import {ToastService} from "../../toast/toast.service";
+
 
 @Component({
   selector: 'app-register',
@@ -32,7 +34,8 @@ export class RegisterComponent implements OnInit {
 
 
   constructor(private router: Router,
-              private authService: AuthService) { }
+              private authService: AuthService,
+              private toastService: ToastService) { }
 
   ngOnInit(): void {
 
@@ -60,10 +63,13 @@ export class RegisterComponent implements OnInit {
 
       }
       if (JSON.stringify(data) === JSON.stringify(this.success)) {
+
+        this.toastService.showMessageSuccess('success', 'Đăng ký tài khoản thành công');
+        this.status = 'Tạo tài khoản người dùng thành công!';
+
         this.checkSuccess = true;
         this.status = 'Đăng ký thành công'
         this.router.navigate(['/login']);
-
       }
 
     });

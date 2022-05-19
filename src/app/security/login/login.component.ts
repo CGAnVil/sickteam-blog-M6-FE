@@ -5,9 +5,9 @@ import {AuthService, Role} from '../../service/auth/auth.service';
 import {TokenService} from '../../service/auth/token.service';
 import {Router} from '@angular/router';
 import {UserStatus} from './user-status.enum';
-import * as firebase from 'firebase';
-import {AngularFireAuth} from '@angular/fire/auth';
-import {SocialLoginService} from '../../service/login/social-login.service';
+
+import {ToastService} from "../../toast/toast.service";
+
 
 @Component({
   selector: 'app-login',
@@ -33,20 +33,16 @@ export class LoginComponent implements OnInit {
   constructor(private authService: AuthService,
               private tokenService: TokenService,
               private router: Router,
-              private socialService: SocialLoginService,
-              public afAuth: AngularFireAuth) {
+
+              private toastService: ToastService
+              ) {
+
   }
 
   roles: string[] = [];
   name!: string;
 
   ngOnInit(): void {
-    // if (this.tokenService.getToken()) {
-    //   this.isLoggedIn = true;
-    //   this.roles = this.tokenService.getRoles();
-    //   this.name = this.tokenService.getName();
-    //
-    // }
   }
 
   ngSubmit() {
