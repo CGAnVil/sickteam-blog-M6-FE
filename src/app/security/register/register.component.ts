@@ -28,7 +28,7 @@ export class RegisterComponent implements OnInit {
     message: 'Email đã tồn tại, vui lòng nhập email khác'
   };
   success: any = {
-    message: 'Success'
+    message: 'Đăng ký thành công'
   };
   checkSuccess: boolean = false;
 
@@ -52,20 +52,23 @@ export class RegisterComponent implements OnInit {
     this.authService.signUp(this.signUpForm).subscribe(data => {
       console.log('data = ', data);
       if (JSON.stringify(data) === JSON.stringify(this.error1)) {
-        this.status = 'Tên người dùng đã tồn tại! Vui lòng thử lại!';
+        this.status = 'Người dùng đã tồn tại, vui lòng nhập người dùng khác';
       }
       if (this.form.password !== this.form.rePassword) {
         this.checkPass = false;
         this.status = 'Mật khẩu không hợp lệ';
       }
       if (JSON.stringify(data) === JSON.stringify(this.error2)) {
-        this.status = 'Email đã tồn tại! Vui lòng thử lại!';
+        this.status = 'Email đã tồn tại, vui lòng nhập email khác';
 
       }
       if (JSON.stringify(data) === JSON.stringify(this.success)) {
+
         this.toastService.showMessageSuccess('success', 'Đăng ký tài khoản thành công');
         this.status = 'Tạo tài khoản người dùng thành công!';
+
         this.checkSuccess = true;
+        this.status = 'Đăng ký thành công'
         this.router.navigate(['/login']);
       }
 

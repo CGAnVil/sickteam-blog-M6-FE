@@ -37,6 +37,9 @@ import { PostDetailCategoryComponent } from './post-detail-category/post-detail-
 
 import { CreateCommentComponent } from './comment/create-comment/create-comment.component';
 import {CKEditorModule} from '@ckeditor/ckeditor5-angular';
+import {environment} from '../environments/environment';
+import {AngularFireModule} from '@angular/fire';
+import {AngularFireAuthModule} from '@angular/fire/auth';
 
 
 @NgModule({
@@ -80,7 +83,9 @@ import {CKEditorModule} from '@ckeditor/ckeditor5-angular';
     MatSortModule,
     MatToolbarModule,
     MatDialogModule,
-    CKEditorModule
+    CKEditorModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireAuthModule
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}

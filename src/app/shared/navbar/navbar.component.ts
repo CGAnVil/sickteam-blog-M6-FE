@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
 import {TokenService} from '../../service/auth/token.service';
+import * as firebase from 'firebase';
 
 @Component({
   selector: 'app-navbar',
@@ -29,10 +30,8 @@ export class NavbarComponent implements OnInit {
   logout() {
     this.checkLogin = false;
     this.nameLogin = null;
-    localStorage.removeItem('nameLogin');
-    localStorage.removeItem('idLogin');
-    localStorage.removeItem('roleLogin');
-    localStorage.removeItem('userLogin');
+    localStorage.clear();
+    sessionStorage.clear();
     this.router.navigate(['/']);
   }
 }

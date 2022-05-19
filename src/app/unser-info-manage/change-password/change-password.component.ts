@@ -21,7 +21,7 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
   styleUrls: ['./change-password.component.css']
 })
 export class ChangePasswordComponent implements OnInit {
-  status = 'Please fill in the form to change your password';
+  status = 'Vui lòng điền vào biểu mẫu để thay đổi mật khẩu của bạn';
   myForm: FormGroup;
   matcher = new MyErrorStateMatcher();
   isChangePassed = false;
@@ -72,13 +72,17 @@ export class ChangePasswordComponent implements OnInit {
             this.isChangePassed = true;
             console.log('data trong if', response);
             console.log('ischangePass', this.isChangePassed);
+
             this.toastService.showMessageSuccess('success','Thay đổi mật khẩu thành công');
             localStorage.removeItem('userLogin');
             localStorage.removeItem('roleLogin');
             localStorage.removeItem('nameLogin');
             this.router.navigateByUrl('/login');
+
+            this.status = 'Đổi mật khẩu thành công!';
+
           } else {
-            this.status = 'Change Password fail!';
+            this.status = 'Đổi mật khẩu thất bại!';
             this.isChangePassed = false;
             this.isChecking = false;
           }
