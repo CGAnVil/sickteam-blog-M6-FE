@@ -34,25 +34,10 @@ import { InfoDetailComponent } from './unser-info-manage/info-detail/info-detail
 import { PostFullDetailComponent } from './post-full-detail/post-full-detail.component';
 import { CreateCommentComponent } from './comment/create-comment/create-comment.component';
 import {CKEditorModule} from '@ckeditor/ckeditor5-angular';
-import {AuthServiceConfig, FacebookLoginProvider, GoogleLoginProvider} from 'angular-6-social-login';
-import {AngularFireModule} from '@angular/fire/compat';
 import {environment} from '../environments/environment';
-import {AngularFireAuthModule} from '@angular/fire/compat/auth';
-export function socialConfigs() {
-  const config = new AuthServiceConfig(
-    [
-      {
-        id: FacebookLoginProvider.PROVIDER_ID,
-        provider: new FacebookLoginProvider('app -id')
-      },
-      {
-        id: GoogleLoginProvider.PROVIDER_ID,
-        provider: new GoogleLoginProvider('app-id')
-      }
-    ]
-  );
-  return config;
-}
+import {AngularFireModule} from '@angular/fire';
+import {AngularFireAuthModule} from '@angular/fire/auth';
+
 @NgModule({
   declarations: [
     AppComponent,

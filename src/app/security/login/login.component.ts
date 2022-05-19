@@ -4,12 +4,9 @@ import {User} from '../../model/user';
 import {AuthService, Role} from '../../service/auth/auth.service';
 import {TokenService} from '../../service/auth/token.service';
 import {Router} from '@angular/router';
-import {SocialLoginService} from '../../service/login/social-login.service';
 import {UserStatus} from './user-status.enum';
-import {FacebookLoginProvider, GoogleLoginProvider, SocialUser} from 'angular-6-social-login';
-import {JwtRespone} from '../../model/jwt-respone';
 import * as firebase from 'firebase';
-import {AngularFireAuth} from '@angular/fire/compat/auth';
+import {AngularFireAuth} from '@angular/fire/auth';
 
 @Component({
   selector: 'app-login',
@@ -35,7 +32,6 @@ export class LoginComponent implements OnInit {
   constructor(private authService: AuthService,
               private tokenService: TokenService,
               private router: Router,
-              private socialService: SocialLoginService,
               public afAuth: AngularFireAuth) {
   }
 
@@ -126,7 +122,6 @@ export class LoginComponent implements OnInit {
   }
 
   response;
-  socialusers = new SocialUser();
 
   login() {
     // this.auth.signInWithPopup();
@@ -188,34 +183,5 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  public socialSignIn(socialProvider: string) {
-    console.log(socialProvider)
-    let socialPlatformProvider;
-    if (socialProvider === 'facebook') {
-      socialPlatformProvider = FacebookLoginProvider.PROVIDER_ID;
-    } else if (socialProvider === 'google') {
-      socialPlatformProvider = GoogleLoginProvider.PROVIDER_ID;
-    }
-
-    this.authService.signIn(socialPlatformProvider).subscribe(socialusers => {
-      console.log(socialProvider, socialusers);
-      console.log(socialusers);
-      this.Savesresponse(socialusers);
-
-    });
-  }
-
-  Savesresponse(socialusers: JwtRespone) {
-
-    this.socialService.Savesresponse(socialusers).subscribe((res: any) => {
-      debugger;
-      console.log(res);
-      this.socialusers=res;
-      this.response = res.userDetail;
-      localStorage.setItem('socialusers', JSON.stringify( this.socialusers));
-      console.log(localStorage.setItem('socialusers', JSON.stringify(this.socialusers)));
-      this.router.navigate([``]);
-    })
-  }
 
 }
