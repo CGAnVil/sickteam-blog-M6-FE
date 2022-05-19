@@ -12,6 +12,7 @@ import {UserService} from '../../service/user/user.service';
 import {AuthService} from '../../service/auth/auth.service';
 import {HttpClient} from '@angular/common/http';
 import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+import {ToastService} from "../../toast/toast.service";
 
 @Component({
   selector: 'app-post-edit',
@@ -45,6 +46,7 @@ export class PostEditComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private categoryService: CategoryService,
+    private toastService: ToastService
   ) {
   }
 
@@ -109,7 +111,8 @@ export class PostEditComponent implements OnInit {
     }
 
     this.postService.editPost(this.post.id, formData).subscribe(() => {
-      alert('Chinh sua thanh cong');
+      this.toastService.showMessageSuccess('success','Chỉnh sửa bài viết thành công');
+      this.router.navigateByUrl("/user");
     });
   }
 

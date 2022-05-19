@@ -75,9 +75,9 @@ export class PostCreateComponent implements OnInit {
 
 
     this.postService.createPostFormData(formData).subscribe( () =>  {
-      this.toastService.showMessage('' +
+      this.toastService.showMessageSuccess('' +
         'success', "Tạo bài viết mới thành công")
-      // this.router.navigateByUrl('/user');
+      this.router.navigateByUrl('/user');
     });
     console.log(formData.getAll('name'));
   }

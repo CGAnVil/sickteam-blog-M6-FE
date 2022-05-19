@@ -63,7 +63,7 @@ export class RegisterComponent implements OnInit {
 
       }
       if (JSON.stringify(data) === JSON.stringify(this.success)) {
-        this.toastService.showMessage('Đăng ký tài khoản thành công', 'is-success');
+        this.toastService.showMessageSuccess('success', 'Đăng ký tài khoản thành công');
         this.status = 'Tạo tài khoản người dùng thành công!';
         this.checkSuccess = true;
         this.router.navigate(['/login']);

@@ -9,7 +9,7 @@ export class ToastService {
 
   constructor() { }
 
-  showMessage(icon, title) {
+  showMessageSuccess(icon, title) {
     $(function() {
       Swal.fire({
         timer: 3000,
@@ -19,4 +19,6 @@ export class ToastService {
       });
     });
   }
+
+
 }
