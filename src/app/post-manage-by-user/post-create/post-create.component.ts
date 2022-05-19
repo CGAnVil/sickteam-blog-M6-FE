@@ -55,6 +55,7 @@ export class PostCreateComponent implements OnInit {
       user:[''],
     })
     CKEDITOR.replace('contentCreate');
+
     this.idLogin = localStorage.getItem('idLogin');
     this.user = JSON.parse(<string> localStorage.getItem('userLogin'));
     this.findUser(this.user.id);
