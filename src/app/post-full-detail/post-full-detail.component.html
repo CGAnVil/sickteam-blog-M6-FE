@@ -29,22 +29,24 @@
                   <p>{{post.description}}</p>
                   <p [innerHTML]="post.content"></p>
                   <ul class="post-info">
-                    <li><a >{{ post?.user?.fullName }}</a></li>
-                    <li><a >{{post.dateCreate | date:'MM/dd/yyyy'}}</a></li>
-                    <li><a >{{totalLike}}&nbsp;<i class="fa-solid fa-heart"></i></a></li>
-                    <li><a >{{comments.length}}&nbsp;<i
+                    <li><a>{{ post?.user?.fullName }}</a></li>
+                    <li><a>{{post.dateCreate | date:'MM/dd/yyyy'}}</a></li>
+                    <li><a>{{totalLike}}&nbsp;<i class="fa-solid fa-heart"></i></a></li>
+                    <li><a>{{comments.length}}&nbsp;<i
                       class="fas fa-comment"></i></a></li>
                   </ul>
                   <ul class="post-info">
-                    <li><a (click)="likeUnlikePost(idPost, idLogin)"><i class="fa-solid fa-heart"></i>&nbsp;Thích</a></li>
-                    <li><a routerLink="/createComment/{{post.id}}"><i class="fa-solid fa-comment"></i>&nbsp;Bình luận</a></li>
+                    <li><a (click)="likeUnlikePost(idPost, idLogin)"><i class="fa-solid fa-heart"></i>&nbsp;Thích</a>
+                    </li>
+                    <li><a routerLink="/createComment/{{post.id}}"><i class="fa-solid fa-comment"></i>&nbsp;Bình
+                      luận</a></li>
                   </ul>
                   <div class="comment mt-4 text-justify float-left">
                     <ng-container *ngFor="let cmt of comments">
                       <p>{{cmt.content}}</p>
                       <ul class="post-info">
                         <li>
-                          <a href="#"><img style="border-radius: 10px"
+                          <a href="#"><img style="border-radius: 10px" width="15px" height="15px"
                                            src="http://localhost:8080/image/{{cmt.userCommentPost.avatar}}"/></a>
                         </li>
                         <li>
