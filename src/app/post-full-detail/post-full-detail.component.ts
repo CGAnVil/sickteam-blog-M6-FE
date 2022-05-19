@@ -14,9 +14,9 @@ export class PostFullDetailComponent implements OnInit {
 
   post: Post;
 
-  idLogin!: any;
+  idLogin?: any;
 
-  userLogin: any;
+  userLogin?: any;
 
   idPost: any;
 
@@ -29,12 +29,12 @@ export class PostFullDetailComponent implements OnInit {
               private activatedRoute: ActivatedRoute) {
     this.activatedRoute.paramMap.subscribe((paramMap: ParamMap) => {
       this.idPost = +paramMap.get('id');
+      this.userLogin = JSON.parse(localStorage.getItem('userLogin'));
+      this.idLogin = this.userLogin.id;
     });
   }
 
   ngOnInit() {
-    this.userLogin = JSON.parse(localStorage.getItem('userLogin'));
-    this.idLogin = this.userLogin.id;
     this.getPostById();
   }
 
